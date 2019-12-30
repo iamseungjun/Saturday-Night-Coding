@@ -13,18 +13,24 @@ import pymysql
 # }
 # column_idx_lookup = {'code': 0, 'name': 1, 'cprice': 2}
 
+global rows
+rowslen = 0
+
 class MyWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setupUI()
 
     def setupUI(self):
+        sql = MySQL()
         self.setGeometry(800, 200, 800, 500)
 
         self.tableWidget = QTableWidget(self)
         self.tableWidget.resize(780, 480)
-        self.tableWidget.setRowCount(3)
         self.tableWidget.setColumnCount(5)
+        self.tableWidget.setRowCount(rowslen)
+        print(rowslen)
+        print(row)
 
         self.setTableWidgetData()
 
@@ -37,23 +43,23 @@ class MyWindow(QMainWindow):
         # self.tableWidget.setItem(1, 0, QTableWidgetItem("(1,0"))
         # self.tableWidget.setItem(1, 1, QTableWidgetItem("(1,1"))
 
-        SQLresult = MySql()
-        for i in SQLresult:
 
+# noinspection PyGlobalUndefined
+class MySQL:
 
-def MySql():
-    conn = pymysql.connect(host='localhost', user='root', password='root1234', db='contest', charset='utf8')
+    def __init__(self):
+        conn = pymysql.connect(host='localhost', user='root', password='root1234', db='contest', charset='utf8')
 
-    curs = conn.cursor()
+        curs = conn.cursor()
 
-    sql = "SELECT id,name,year,rating,tier FROM `member`"    # SQL Query
-    curs.execute(sql)
+        sql = "SELECT id,name,year,rating,tier FROM `member`"  # SQL Query
+        curs.execute(sql)
 
-    rows = curs.fetchall()  # rows : Tuple ex) (1, '김수정', 1, '서울')
-    print(rows)
+        rows = curs.fetchall()  # rows : Tuple ex) (1, '김수정', 1, '서울')
+        rowslen = len(rows)
+        print(rowslen)
 
-    conn.close()
-
+        conn.close()
 
 
 def main():
@@ -61,6 +67,7 @@ def main():
     mywindow = MyWindow()
     mywindow.show()
     app.exec_()
+
 
 if __name__ == "__main__":
     main()
