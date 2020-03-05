@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.3/js/jquery.tablesorter.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:500&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/7cc77c19eb.js" crossorigin="anonymous"></script>
     <style>
@@ -102,16 +103,21 @@
             </ul>
             <div class="tab-content" id="pills-tabContent">
                 <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                    <table class="table">
+                <script>
+                    $(document).ready(function(){
+                        $("#memberlist").tablesorter();
+                        });
+                </script>
+                    <table id="memberlist" class="table tablesorter tablesorter-default">
                         <thead>
-                            <tr>
-                                <th scope="col">번호</th>
-                                <th scope="col">이름</th>
-                                <th scope="col">기수</th>
-                                <th scope="col">아이디</th>
-                                <th scope="col">이메일</th>
-                                <th scope="col">레이팅</th>
-                                <th scope="col">티어</th>
+                            <tr class="tablesorter-headerRow" role="row">
+                                <th scope="col" class="tablesorter-header tablesorter-headerAsc" role="columnheader" aria-disabled="false" aria-controls="memberlist" unselectable="off" aria-sort="none" >번호</th>
+                                <th scope="col" class="tablesorter-header tablesorter-headerUnSorted" role="columnheader" aria-disabled="false" aria-controls="memberlist" unselectable="off" aria-sort="none" >이름</th>
+                                <th scope="col" class="tablesorter-header tablesorter-headerUnSorted" role="columnheader" aria-disabled="false" aria-controls="memberlist" unselectable="off" aria-sort="none" >기수</th>
+                                <th scope="col" class="tablesorter-header tablesorter-headerUnSorted" role="columnheader" aria-disabled="false" aria-controls="memberlist" unselectable="off" aria-sort="none" >아이디</th>
+                                <th scope="col" class="tablesorter-header tablesorter-headerUnSorted" role="columnheader" aria-disabled="false" aria-controls="memberlist" unselectable="off" aria-sort="none" >이메일</th>
+                                <th scope="col" class="tablesorter-header tablesorter-headerUnSorted" role="columnheader" aria-disabled="false" aria-controls="memberlist" unselectable="off" aria-sort="none" >레이팅</th>
+                                <th scope="col" class="tablesorter-header tablesorter-headerUnSorted" role="columnheader" aria-disabled="false" aria-controls="memberlist" unselectable="off" aria-sort="none" >티어</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -121,7 +127,7 @@
 
                                 $i=1;
                                 while($row = mysqli_fetch_array($result)){
-                                    echo "<tr><th scope=\"row\">".$i."</th><td>".$row['name']."</td><td>".$row['year']."</td><td>".$row['id']."</td><td>".$row['email']."</td><td>".$row['rating']."</td><td>".$row['tier']."</td></tr>";
+                                    echo "<tr role=\"row\"><th scope=\"row\">".$i."</th><td>".$row['name']."</td><td>".$row['year']."</td><td>".$row['id']."</td><td>".$row['email']."</td><td>".$row['rating']."</td><td>".$row['tier']."</td></tr>";
                                     $i+=1;
                                 }
                             ?>
@@ -136,7 +142,7 @@
                 </div>
             </div>
         </div>
-             <?php 
+             <?php
              } else {
                  echo "<div class=\"container mt-4 mb-4\">잘못된 접근입니다.</div>";
              }
@@ -152,4 +158,3 @@
      </footer>
 </body>
 </html>
-
