@@ -3,7 +3,7 @@
    $conn = mysqli_connect(
        'localhost',
        'root',
-       'root1234',
+       'E9LWMIZotVGX',
        'contest'
    );
 ?>
@@ -19,41 +19,10 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:500&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/7cc77c19eb.js" crossorigin="anonymous"></script>
+    <style>
+        * { font-family: 'Noto Sans KR', sans-serif; }
+    </style
     <title>SNC Contest</title>
-    <style media="screen">
-        * {
-            font-family: 'Noto Sans KR', sans-serif;
-        }
-        .form-signin {
-          width: 100%;
-          max-width: 330px;
-          padding: 15px;
-          margin: auto;
-        }
-        .form-signin .checkbox {
-          font-weight: 400;
-        }
-        .form-signin .form-control {
-          position: relative;
-          box-sizing: border-box;
-          height: auto;
-          padding: 10px;
-          font-size: 16px;
-        }
-        .form-signin .form-control:focus {
-          z-index: 2;
-        }
-        .form-signin input[type="email"] {
-          margin-bottom: -1px;
-          border-bottom-right-radius: 0;
-          border-bottom-left-radius: 0;
-        }
-        .form-signin input[type="password"] {
-          margin-bottom: 10px;
-          border-top-left-radius: 0;
-          border-top-right-radius: 0;
-        }
-    </style>
 </head>
 <body>
     <header>
@@ -113,11 +82,7 @@
      <main role="main">
          <div class="container mt-4 mb-4">&nbsp;</div>
          <?php
-            // if(isset($_SESSION['id'])){
-            //     $sql = "SELECT tier FROM member WHERE id=={$_SESSION['id']}";
-            //     $result = mysqli_query($conn, $sql);
-            //     $row = mysqli_fetch_array($result);
-            //     if($row == "Admin") {
+             if(isset($_SESSION['id']) && $_SESSION['id']=="bi0416"){
                     ?>
         <div class="container h1 mt-4 mb-4 text-center">관리 페이지</div>
         <div class="container">
@@ -142,6 +107,7 @@
                             <tr>
                                 <th scope="col">번호</th>
                                 <th scope="col">이름</th>
+                                <th scope="col"></th>
                                 <th scope="col">아이디</th>
                                 <th scope="col">이메일</th>
                                 <th scope="col">레이팅</th>
@@ -155,8 +121,7 @@
 
                                 $i=1;
                                 while($row = mysqli_fetch_array($result)){
-                                    // echo "<p>".$row['year']."_".$row['name']."</p>";
-                                    echo "<tr><th scope=\"row\">".$i."</th><td>".$row['name']."</td><td>".$row['id']."</td><td>".$row['email']."</td><td>".$row['rating']."</td><td>".$row['tier']."</td></tr>";
+                                    echo "<tr><th scope=\"row\">".$i."</th><td>".$row['name']."</td><td>".$row['year']."</td><td>".$row['id']."</td><td>".$row['email']."</td><td>".$row['rating']."</td><td>".$row['tier']."</td></tr>";
                                     $i+=1;
                                 }
                             ?>
@@ -171,13 +136,10 @@
                 </div>
             </div>
         </div>
-                    <?php
-            //     } else {
-            //         echo "<div class=\"container mt-4 mb-4\">잘못된 접근입니다.</div>";
-            //     }
-            // } else {
-            //     echo "<div class=\"container mt-4 mb-4\">잘못된 접근입니다.</div>";
-            // }
+             <?php 
+             } else {
+                 echo "<div class=\"container mt-4 mb-4\">잘못된 접근입니다.</div>";
+             }
          ?>
      </main>
      <hr>
@@ -190,3 +152,4 @@
      </footer>
 </body>
 </html>
+
