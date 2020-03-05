@@ -107,7 +107,7 @@
                             <tr>
                                 <th scope="col">번호</th>
                                 <th scope="col">이름</th>
-                                <th scope="col"></th>
+                                <th scope="col">기수</th>
                                 <th scope="col">아이디</th>
                                 <th scope="col">이메일</th>
                                 <th scope="col">레이팅</th>
