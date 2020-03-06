@@ -114,19 +114,19 @@
                 <div class="form-group row">
                     <label for="" class="col-sm-2 col-form-label">이메일</label>
                     <div class="col-sm-10">
-                        <input type="email" name="email" value="" class="form-control" value="<?php echo $row['email']; ?>">
+                        <input type="email" name="email" class="form-control" value="<?php echo $row['email']; ?>">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="" class="col-sm-2 col-form-label">레이팅</label>
                     <div class="col-sm-10">
-                        <input type="text" name="rating" value="" class="form-control" value="<?php echo $row['rating']; ?>">
+                        <input type="text" name="rating" class="form-control" value="<?php echo $row['rating']; ?>">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="" class="col-sm-2 col-form-label">티어</label>
                     <div class="col-sm-10">
-                        <input type="text" name="tier" value="" class="form-control" value="<?php echo $row['tier']; ?>">
+                        <input type="text" name="tier" class="form-control" value="<?php echo $row['tier']; ?>">
                     </div>
                 </div>
                 <div class="col-auto">
