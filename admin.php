@@ -184,7 +184,7 @@
 
                                 $i=1;
                                 while($row = mysqli_fetch_array($result)){
-                                    echo "<tr role=\"row\"><th scope=\"row\">".$i."</th><td>".$row['id']."</td><td><a href=\"#\" id="getCon" class=\"btn btn-primary\"); \">확인</a></td></tr>";
+                                    echo "<tr role=\"row\"><th scope=\"row\">".$i."</th><td id=\"idval\">".$row['id']."</td><td><a href=\"#\" id=\"getCon\" class=\"btn btn-primary\"); \">확인</a></td></tr>";
                                     $i+=1;
                                 }
                             ?>
