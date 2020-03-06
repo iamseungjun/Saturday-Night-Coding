@@ -198,20 +198,31 @@
                             identy = self.parent().parent().find("#idval").html();
                             console.log(identy);
 
-                            $.ajax({
-                                url : './getcontent.php',
-                                type : 'post',
-                                data : identy.serialize(),
-                                success : function(data){
+                            // $.ajax({
+                            //     url : './getcontent.php',
+                            //     type : 'post',
+                            //     data : identy.serialize(),
+                            //     success : function(data){
+                            //         console.log(data);
+                            //         if(data){
+                            //             $('#applicationContents').text(data);
+                            //         }
+                            //     },
+                            //     error : function(request, status, error){
+                            //         console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+                            //     }
+                            // });
+
+                            $.post(
+                                "./getcontent.php",
+                                { identy : identy },
+                                function(data){
                                     console.log(data);
                                     if(data){
                                         $('#applicationContents').text(data);
                                     }
-                                },
-                                error : function(request, status, error){
-                                    console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
                                 }
-                            });
+                            );
                         })
                     </script>
                     <div id="applicationContents" class="container mt-2">
