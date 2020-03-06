@@ -118,7 +118,7 @@
                                 <th scope="col" class="tablesorter-header tablesorter-headerUnSorted" role="columnheader" aria-disabled="false" aria-controls="memberlist" unselectable="off" aria-sort="none" >이메일</th>
                                 <th scope="col" class="tablesorter-header tablesorter-headerUnSorted" role="columnheader" aria-disabled="false" aria-controls="memberlist" unselectable="off" aria-sort="none" >레이팅</th>
                                 <th scope="col" class="tablesorter-header tablesorter-headerUnSorted" role="columnheader" aria-disabled="false" aria-controls="memberlist" unselectable="off" aria-sort="none" >티어</th>
-                                <th class="tablesorter-header" scope="col" role="columnheader" aria-disabled="false" aria-controls="exceptionlist" unselectable="off" aria-sort="none">확인</th>
+                                <th scope="col" class="tablesorter-header tablesorter-headerUnSorted" role="columnheader" aria-disabled="false" aria-controls="memberlist" unselectable="off" aria-sort="none" >확인</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -128,7 +128,7 @@
 
                                 $i=1;
                                 while($row = mysqli_fetch_array($result)){
-                                    echo "<tr role=\"row\"><th scope=\"row\">".$i."</th><td>".$row['id']."</td><td>".$row['content']."</td><td>".$row['date']."</td><td><a href=\"management.php?id=".$row['id']."\"></a></td></tr>";
+                                    echo "<tr role=\"row\"><th scope=\"row\">".$i."</th><td>".$row['name']."</td><td>".$row['year']."</td><td>".$row['id']."</td><td>".$row['email']."</td><td>".$row['rating']."</td><td>".$row['tier']."</td><td><a href=\"management.php?id=".$row['id']."\"></a></td></tr>";
                                     $i+=1;
                                 }
                             ?>
@@ -197,7 +197,7 @@
                             var identy;
 
                             identy = self.parent().parent().find("#idval").html();
-                            
+
                             $.post(
                                 "./getcontent.php",
                                 { identy : identy },
