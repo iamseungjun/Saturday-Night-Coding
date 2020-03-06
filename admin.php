@@ -118,6 +118,7 @@
                                 <th scope="col" class="tablesorter-header tablesorter-headerUnSorted" role="columnheader" aria-disabled="false" aria-controls="memberlist" unselectable="off" aria-sort="none" >이메일</th>
                                 <th scope="col" class="tablesorter-header tablesorter-headerUnSorted" role="columnheader" aria-disabled="false" aria-controls="memberlist" unselectable="off" aria-sort="none" >레이팅</th>
                                 <th scope="col" class="tablesorter-header tablesorter-headerUnSorted" role="columnheader" aria-disabled="false" aria-controls="memberlist" unselectable="off" aria-sort="none" >티어</th>
+                                <th class="tablesorter-header" scope="col" role="columnheader" aria-disabled="false" aria-controls="exceptionlist" unselectable="off" aria-sort="none">확인</th>
                             </tr>
                         </thead>
                         <tbody>
