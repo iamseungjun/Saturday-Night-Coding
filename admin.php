@@ -192,26 +192,27 @@
                     </table>
                     <div id="applicationContents" class="container mt-2">
                         <script type-"text/javascript">
-                            $(document).ready(function() {
-                                $("#getCon").on("click", function(){
-                                    var self = $(this);
-                                    var identy;
+                            $('#getCon').click(function(){
+                                var self = $(this);
+                                var identy;
 
-                                    identy = self.parent().parent().find("#idval").html();
-                                    console.log(identy);
+                                identy = self.parent().parent().find("#idval").html();
+                                console.log(identy);
 
-                                    $.post(
-                                        "getcontent.php",
-                                        { identy : identy },
-                                        function(data){
-                                            if(data){
-                                                self.parent().parent().parent().parent().parent().find("#applicationContents").html(data);
-                                            }
+                                $.ajax({
+                                    url : './getcontent.php',
+                                    type : 'post',
+                                    data : identy,
+                                    success : function(data){
+                                        if(data){
+                                            $('#applicationContents').text(data);
                                         }
-                                    );
+                                    },
+                                    error : function(request, status, error){
+                                        console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+                                    }
                                 });
-                            });
-
+                            })
                         </script>
                     </div>
                 </div>
