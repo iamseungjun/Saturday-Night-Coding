@@ -179,7 +179,7 @@
                         </thead>
                         <tbody>
                             <?php
-                                $sql = "SELECT * FROM application";
+                                $sql = "SELECT * FROM application ORDER BY id";
                                 $result = mysqli_query($conn, $sql);
 
                                 $i=1;
