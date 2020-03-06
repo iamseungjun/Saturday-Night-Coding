@@ -196,23 +196,7 @@
                             var identy;
 
                             identy = self.parent().parent().find("#idval").html();
-                            console.log(identy);
-
-                            // $.ajax({
-                            //     url : './getcontent.php',
-                            //     type : 'post',
-                            //     data : identy.serialize(),
-                            //     success : function(data){
-                            //         console.log(data);
-                            //         if(data){
-                            //             $('#applicationContents').text(data);
-                            //         }
-                            //     },
-                            //     error : function(request, status, error){
-                            //         console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-                            //     }
-                            // });
-
+                            
                             $.post(
                                 "./getcontent.php",
                                 { identy : identy },
@@ -225,8 +209,10 @@
                             );
                         })
                     </script>
-                    <div id="applicationContents" class="container mt-2">
-                        DATA
+                    <div class="container mt-2">
+                        <ol id="applicationContents">
+
+                        </ol>
                     </div>
                 </div>
                 <div class="tab-pane fade" id="pills-date" role="tabpanel" aria-labelledby="pills-date-tab">
