@@ -1,12 +1,13 @@
 <?php
-    if($_POST['id'] != NULL){
+    if($_POST['identy'] != NULL){
         $conn = mysqli_connect(
             'localhost',
             'root',
             'E9LWMIZotVGX',
             'contest'
         );
-        $sql = "SELECT * FROM application WHERE id='{$_POST['id']}'";
+        echo "{$_POST['identy']} CLEAR";
+        $sql = "SELECT * FROM application WHERE id='{$_POST['identy']}'";
         $result = mysqli_query($conn, $sql);
         $row = mysqli_fetch_array($result);
 
