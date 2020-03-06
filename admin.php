@@ -127,7 +127,7 @@
 
                                 $i=1;
                                 while($row = mysqli_fetch_array($result)){
-                                    echo "<tr role=\"row\"><th scope=\"row\">".$i."</th><td>".$row['name']."</td><td>".$row['year']."</td><td>".$row['id']."</td><td>".$row['email']."</td><td>".$row['rating']."</td><td>".$row['tier']."</td></tr>";
+                                    echo "<tr role=\"row\"><th scope=\"row\">".$i."</th><td>".$row['id']."</td><td>".$row['content']."</td><td>".$row['date']."</td><td><a href=\"management.php?id=".$row['id']."\"></a></td></tr>";
                                     $i+=1;
                                 }
                             ?>
