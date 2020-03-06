@@ -191,6 +191,7 @@
                         </tbody>
                     </table>
                     <div id="applicationContents" class="container mt-2">
+                       신청내역 확인
                         <script type-"text/javascript">
                             $.fn.GetCont = function(id){
                                 var self=$("#allpicationContents");
