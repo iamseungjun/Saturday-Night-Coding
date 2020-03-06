@@ -131,9 +131,19 @@
                 </div>
                 <div class="col-auto">
                     <button type="submit" id="submit" class="btn btn-primary mt-2">수정</button>
-                    <a href="#" class="btn btn-danger mt-2" onclick="">삭제</a>
+                    <a href="#" class="btn btn-danger mt-2" onclick="delete();">삭제</a>
                 </div>
             </form>
+            <script>
+                function delete(){
+                    var d = confirm("정말로 삭제하시겠습니까? ID : <?php echo $_GET['id']; ?>");
+                    if(d == true) {
+                        location.href = "deletemember.php?id=<?php echo $_GET['id']; ?>";
+                    } else {
+                        history.back();
+                    }
+                }
+            </script>
         </div>
              <?php
              } else {
