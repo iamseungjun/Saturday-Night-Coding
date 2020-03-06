@@ -89,20 +89,20 @@
         <div class="container">
             <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-member" aria-selected="true">회원관리</a>
+                    <a class="nav-link active" id="pills-member-tab" data-toggle="pill" href="#pills-member" role="tab" aria-controls="pills-member" aria-selected="true">회원관리</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-exception" aria-selected="false">이의제기관리</a>
+                    <a class="nav-link" id="pills-exception-tab" data-toggle="pill" href="#pills-exception" role="tab" aria-controls="pills-exception" aria-selected="false">이의제기관리</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-application" aria-selected="false">신청관리</a>
+                    <a class="nav-link" id="pills-application-tab" data-toggle="pill" href="#pills-application" role="tab" aria-controls="pills-application" aria-selected="false">신청관리</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-date" aria-selected="false">일정관리</a>
+                    <a class="nav-link" id="pills-date-tab" data-toggle="pill" href="#pills-date" role="tab" aria-controls="pills-date" aria-selected="false">일정관리</a>
                 </li>
             </ul>
             <div class="tab-content" id="pills-tabContent">
-                <div class="tab-pane fade show active" id="pills-member" role="tabpanel" aria-labelledby="pills-home-tab">
+                <div class="tab-pane fade show active" id="pills-member" role="tabpanel" aria-labelledby="pills-member-tab">
                     <script>
                         $(document).ready(function(){
                             $("#memberlist").tablesorter();
@@ -134,7 +134,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="tab-pane fade" id="pills-exception" role="tabpanel" aria-labelledby="pills-profile-tab">
+                <div class="tab-pane fade" id="pills-exception" role="tabpanel" aria-labelledby="pills-exception-tab">
                     <script>
                         $(document).ready(function(){
                             $("#exceptionlist").tablesorter();
@@ -163,7 +163,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="tab-pane fade" id="pills-application" role="tabpanel" aria-labelledby="pills-contact-tab">
+                <div class="tab-pane fade" id="pills-application" role="tabpanel" aria-labelledby="pills-application-tab">
                     <script>
                         $(document).ready(function(){
                             $("#applicationlist").tablesorter();
@@ -208,7 +208,7 @@
                         </script>
                     </div>
                 </div>
-                <div class="tab-pane fade" id="pills-date" role="tabpanel" aria-labelledby="pills-contact-tab">
+                <div class="tab-pane fade" id="pills-date" role="tabpanel" aria-labelledby="pills-date-tab">
                     <!------>
                 </div>
             </div>
