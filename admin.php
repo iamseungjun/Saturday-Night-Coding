@@ -190,31 +190,32 @@
                             ?>
                         </tbody>
                     </table>
-                    <div id="applicationContents" class="container mt-2">
-                        <script type-"text/javascript">
-                            $('#getCon').click(function(){
-                                var self = $(this);
-                                var identy;
+                    <script type-"text/javascript">
+                        $('#getCon').click(function(){
+                            var self = $(this);
+                            var identy;
 
-                                identy = self.parent().parent().find("#idval").html();
-                                console.log(identy);
+                            identy = self.parent().parent().find("#idval").html();
+                            console.log(identy);
 
-                                $.ajax({
-                                    url : './getcontent.php',
-                                    type : 'post',
-                                    data : identy,
-                                    success : function(data){
-                                        console.log(data);
-                                        if(data){
-                                            $('#applicationContents').text(data);
-                                        }
-                                    },
-                                    error : function(request, status, error){
-                                        console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+                            $.ajax({
+                                url : './getcontent.php',
+                                type : 'post',
+                                data : identy,
+                                success : function(data){
+                                    console.log(data);
+                                    if(data){
+                                        $('#applicationContents').text(data);
                                     }
-                                });
-                            })
-                        </script>
+                                },
+                                error : function(request, status, error){
+                                    console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+                                }
+                            });
+                        })
+                    </script>
+                    <div id="applicationContents" class="container mt-2">
+                        DATA
                     </div>
                 </div>
                 <div class="tab-pane fade" id="pills-date" role="tabpanel" aria-labelledby="pills-date-tab">
