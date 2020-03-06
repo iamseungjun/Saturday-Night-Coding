@@ -6,7 +6,7 @@
             'E9LWMIZotVGX',
             'contest'
         );
-        $sql = "SELECT * FROM application WHERE id='{$_POST['identy']}'";
+        $sql = "SELECT * FROM application WHERE id='{$_POST['id']}'";
         $result = mysqli_query($conn, $sql);
         $row = mysqli_fetch_array($result);
 
