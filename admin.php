@@ -199,6 +199,16 @@
 
                                     identy = self.parent().parent().find("#idval").html();
                                     console.log(identy);
+
+                                    $.post(
+                                        "getcontent.php",
+                                        { identy : identy },
+                                        function(data){
+                                            if(data){
+                                                self.parent().parent().parent().parent().parent().find("#applicationContents").html(data);
+                                            }
+                                        }
+                                    );
                                 });
                             });
 
