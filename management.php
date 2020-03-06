@@ -108,7 +108,7 @@
                 <div class="form-group row">
                     <label for="" class="col-sm-2 col-form-label">기수</label>
                     <div class="col-sm-10">
-                        <input type="password" name="year" id="year" class="form-control" value="<?php echo $row['year']; ?>">
+                        <input type="text" name="year" id="year" class="form-control" value="<?php echo $row['year']; ?>">
                     </div>
                 </div>
                 <div class="form-group row">
