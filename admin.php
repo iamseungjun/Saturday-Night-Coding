@@ -201,7 +201,7 @@
                             $.ajax({
                                 url : './getcontent.php',
                                 type : 'post',
-                                data : identy,
+                                data : identy.serialize(),
                                 success : function(data){
                                     console.log(data);
                                     if(data){
