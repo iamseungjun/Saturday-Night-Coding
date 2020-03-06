@@ -204,6 +204,7 @@
                                     type : 'post',
                                     data : identy,
                                     success : function(data){
+                                        console.log(data);
                                         if(data){
                                             $('#applicationContents').text(data);
                                         }
