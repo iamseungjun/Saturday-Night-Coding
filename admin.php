@@ -22,7 +22,7 @@
     <script src="https://kit.fontawesome.com/7cc77c19eb.js" crossorigin="anonymous"></script>
     <style>
         * { font-family: 'Noto Sans KR', sans-serif; }
-    </style
+    </style>
     <title>SNC Contest</title>
 </head>
 <body>
@@ -103,11 +103,11 @@
             </ul>
             <div class="tab-content" id="pills-tabContent">
                 <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                <script>
-                    $(document).ready(function(){
-                        $("#memberlist").tablesorter();
+                    <script>
+                        $(document).ready(function(){
+                            $("#memberlist").tablesorter();
                         });
-                </script>
+                    </script>
                     <table id="memberlist" class="table tablesorter tablesorter-default">
                         <thead>
                             <tr class="tablesorter-headerRow" role="row">
@@ -135,10 +135,78 @@
                     </table>
                 </div>
                 <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                    <script>
+                        $(document).ready(function(){
+                            $("#exceptionlist").tablesorter();
+                        });
+                    </script>
+                    <table id="exceptionlist" class="table tablesorter tablesorter-default">
+                        <thead>
+                            <tr class="tablesorter-headerRow" role="row">
+                                <th class="tablesorter-header" scope="col" role="columnheader" aria-disabled="false" aria-controls="exceptionlist" unselectable="off" aria-sort="none">번호</th>
+                                <th class="tablesorter-header" scope="col" role="columnheader" aria-disabled="false" aria-controls="exceptionlist" unselectable="off" aria-sort="none">아이디</th>
+                                <th class="tablesorter-header" scope="col" role="columnheader" aria-disabled="false" aria-controls="exceptionlist" unselectable="off" aria-sort="none">내용</th>
+                                <th class="tablesorter-header" scope="col" role="columnheader" aria-disabled="false" aria-controls="exceptionlist" unselectable="off" aria-sort="none">날짜</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                                $sql = "SELECT * FROM exception ORDER BY num";
+                                $result = mysqli_query($conn, $sql);
 
+                                $i=1;
+                                while($row = mysqli_fetch_array($result)){
+                                    echo "<tr role=\"row\"><th scope=\"row\">".$i."</th><td>".$row['id']."</td><td>".$row['content']."</td><td>".$row['date']."</td></tr>";
+                                    $i+=1;
+                                }
+                            ?>
+                        </tbody>
+                    </table>
                 </div>
                 <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+                    <script>
+                        $(document).ready(function(){
+                            $("#applicationlist").tablesorter();
+                        });
+                    </script>
+                    <table id="applicationlist" class="table tablesorter tablesorter-default">
+                        <thead>
+                            <tr class="tablesorter-headerRow" role="row">
+                                <th class="tablesorter-header" scope="col" role="columnheader" aria-disabled="false" aria-controls="exceptionlist" unselectable="off" aria-sort="none">번호</th>
+                                <th class="tablesorter-header" scope="col" role="columnheader" aria-disabled="false" aria-controls="exceptionlist" unselectable="off" aria-sort="none">아이디</th>
+                                <th class="tablesorter-header" scope="col" role="columnheader" aria-disabled="true" aria-controls="exceptionlist" unselectable="off" aria-sort="none">확인</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                                $sql = "SELECT * FROM application";
+                                $result = mysqli_query($conn, $sql);
 
+                                $i=1;
+                                while($row = mysqli_fetch_array($result)){
+                                    echo "<tr role=\"row\"><th scope=\"row\">".$i."</th><td>".$row['id']."</td><td><a href="" class="btn btn-primary"></a></td></tr>";
+                                    $i+=1;
+                                }
+                            ?>
+                        </tbody>
+                    </table>
+                    <div id="applicationContents" class="container mt-2">
+                        <script type-"text/javascript">
+                            $.fn.GetCont = function(id){
+                                var self=$("#allpicationContents");
+
+                                $.post(
+                                    "getcontent.php",
+                                    {id : id},
+                                    function(data){
+                                        if(data){
+                                            self.html(data);
+                                        }
+                                    }
+                                );
+                            };
+                        </script>
+                    </div>
                 </div>
             </div>
         </div>
