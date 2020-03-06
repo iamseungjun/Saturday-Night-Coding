@@ -3,7 +3,7 @@
         $conn = mysqli_connect(
             'localhost',
             'root',
-            'root1234',
+            'E9LWMIZotVGX',
             'contest'
         );
         $sql = "SELECT * FROM application WHERE id='{$_POST['identy']}'";
