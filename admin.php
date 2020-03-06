@@ -184,7 +184,7 @@
 
                                 $i=1;
                                 while($row = mysqli_fetch_array($result)){
-                                    echo "<tr role=\"row\"><th scope=\"row\">".$i."</th><td>".$row['id']."</td><td><a href=\"#\" class=\"btn btn-primary\" onClick=\"$(this).GetCont('".$row['id']."'); \"></a></td></tr>";
+                                    echo "<tr role=\"row\"><th scope=\"row\">".$i."</th><td>".$row['id']."</td><td><a href=\"#\" class=\"btn btn-primary\" onClick=\"$(this).GetCont('".$row['id']."'); \">확인</a></td></tr>";
                                     $i+=1;
                                 }
                             ?>
