@@ -194,6 +194,7 @@
                        신청내역 확인
                         <script type-"text/javascript">
                             $.fn.GetCont = function(id){
+                                alert(id);
                                 var self=$("#allpicationContents");
 
                                 $.post(
