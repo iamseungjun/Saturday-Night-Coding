@@ -184,28 +184,24 @@
 
                                 $i=1;
                                 while($row = mysqli_fetch_array($result)){
-                                    echo "<tr role=\"row\"><th scope=\"row\">".$i."</th><td>".$row['id']."</td><td><a href=\"#\" class=\"btn btn-primary\" onClick=\"$(this).GetCont('".$row['id']."'); \">확인</a></td></tr>";
+                                    echo "<tr role=\"row\"><th scope=\"row\">".$i."</th><td id=\"idval\">".$row['id']."</td><td><a href=\"#\" id="getCon" class=\"btn btn-primary\"); \">확인</a></td></tr>";
                                     $i+=1;
                                 }
                             ?>
                         </tbody>
                     </table>
                     <div id="applicationContents" class="container mt-2">
-                       신청내역 확인
                         <script type-"text/javascript">
-                            $.fn.GetCont = function(id){
-                                var self=$("#allpicationContents");
+                            $(document).ready(function() {
+                                $("#getCon").on("click", function(){
+                                    var self = $(this);
+                                    var identy;
 
-                                $.post(
-                                    "getcontent.php",
-                                    {id : id},
-                                    function(data){
-                                        if(data){
-                                            self.html(data);
-                                        }
-                                    }
-                                );
-                            };
+                                    identy = self.parent().parent().find("#idval").html();
+                                    console.log(identy);
+                                });
+                            });
+
                         </script>
                     </div>
                 </div>
