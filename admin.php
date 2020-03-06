@@ -201,9 +201,8 @@
                                 "./getcontent.php",
                                 { identy : identy },
                                 function(data){
-                                    console.log(data);
                                     if(data){
-                                        $('#applicationContents').text(data);
+                                        $('#applicationContents').html(data);
                                     }
                                 }
                             );
