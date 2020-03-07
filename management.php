@@ -131,9 +131,9 @@
                 </div>
                 <div class="col-auto">
                     <button type="submit" id="submit" class="btn btn-primary mt-2">수정</button>
-                    <button class="btn btn-danger mt-2" onclick="delete();">삭제</button>
                 </div>
             </form>
+            <button class="btn btn-danger mt-2" onclick="delete();">삭제</button>
             <script>
                 function delete(){
                     var d = confirm("정말로 삭제하시겠습니까? ID : <?php echo $_GET['id']; ?>");
