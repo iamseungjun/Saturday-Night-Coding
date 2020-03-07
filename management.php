@@ -131,7 +131,7 @@
                 </div>
                 <div class="col-auto">
                     <button type="submit" id="submit" class="btn btn-primary mt-2">수정</button>
-                    <a href="#" class="btn btn-danger mt-2" onclick="delete();">삭제</a>
+                    <button class="btn btn-danger mt-2" onclick="delete();">삭제</button>
                 </div>
             </form>
             <script>
