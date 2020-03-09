@@ -1,5 +1,5 @@
 <?php
-    include "/home/bitnami/amazon-ses-example.php";
+    include "sendEmail.php";
 
     $conn = mysqli_connect(
         'localhost',
