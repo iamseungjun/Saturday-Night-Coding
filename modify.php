@@ -84,7 +84,7 @@
                    $conn = mysqli_connect(
                        'localhost',
                        'root',
-                       'root1234',
+                       'E9LWMIZotVGX',
                        'contest'
                    );
                    $sql = "SELECT email FROM member WHERE id='{$_SESSION['id']}'";
