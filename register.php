@@ -65,106 +65,203 @@
                      </li>
                  </ul>
                  <ul class="navbar-nav ml-auto">
-                     <li class="nav-item"><a href="register.php" class="nav-link">회원가입</a></li>
-                     <li class="nav-item"><a href="login.php" class="nav-link">로그인</a></li>
+                     <?php
+                        if(isset($_SESSION['id'])){
+                            echo "<li class=\"nav-item\"><a href=\"profile.php?id={$_SESSION['id']}\" class=\"nav-link\">프로필</a></li>";
+                            echo "<li class=\"nav-item\"><a href=\"modify.php\" class=\"nav-link\">정보수정</a></li>";
+                            echo "<li class=\"nav-item\"><a href=\"logout.php\" class=\"nav-link\">로그아웃</a></li>";
+                        } else {
+                            echo "<li class=\"nav-item\"><a href=\"register.php\" class=\"nav-link\">회원가입</a></li>";
+                            echo "<li class=\"nav-item\"><a href=\"login.php\" class=\"nav-link\">로그인</a></li>";
+                        }
+                     ?>
                  </ul>
              </div>
          </nav>
      </header>
      <main role="main">
-         <div class="container">
-             <h3 class="mt-4 mb-4">
-                 회원가입
-             </h3>
-         </div>
-         <script type="text/javascript">
-             $(document).ready(function(e){
-                  $("#identy").on("keyup", function(){
-                      var self = $(this);
-                      var identy;
+         <?php
+            if(!isset($_SESSION['id'])){
+                ?>
+                <div class="container">
+                    <h3 class="mt-4 mb-4">
+                        회원가입
+                    </h3>
+                </div>
+                <script type="text/javascript">
+                    $(document).ready(function(e){
+                         $("#identy").on("keyup", function(){
+                             var self = $(this);
+                             var identy;
 
-                      if(self.attr("id") === "identy"){
-                          identy = self.val();
-                      }
+                             if(self.attr("id") === "identy"){
+                                 identy = self.val();
+                             }
 
-                      $.post(
-                          "id_check.php",
-                          { identy : identy },
-                          function(data){
-                              if(data){
-                                  self.parent().parent().find("#id-check").html(data);
-                              }
-                          }
-                      );
-                  });
-             });
+                             $.post(
+                                 "id_check.php",
+                                 { identy : identy },
+                                 function(data){
+                                     if(data){
+                                         self.parent().parent().find("#id-check").html(data);
+                                     }
+                                 }
+                             );
+                         });
+                    });
+                </script>
+                <form method="post" action="register_ok.php" name="registerform" id="registerform" class="container">
+                    <div class="form-group row">
+                        <label for="" class="col-sm-2 col-form-label">아이디</label>
+                        <div class="col-sm-10">
+                            <input type="text" id="identy" name="identy" style="ime-mode:active;" class="form-control" placeholder="코드업 아이디와 일치시켜 주시기 바랍니다.">
+                            <span id="id-check"><span class="text-danger">아이디를 입력하세요.</span</span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="" class="col-sm-2 col-form-label">이름</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="name" class="form-control" style="ime-mode:disabled;">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="" class="col-sm-2 col-form-label">기수</label>
+                        <div class="col-sm-10">
+                            <div class="form-check form-check-inline">
+                                <input type="radio" name="year" id="year1" value="1기" class="form-check-input">
+                                <label for="year1" class="form-check-label">1기</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input type="radio" name="year" id="year2" value="2기" class="form-check-input">
+                                <label for="year2" class="form-check-label">2기</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input type="radio" name="year" id="yearstaff" value="STAFF" class="form-check-input" disabled>
+                                <label for="yearstaff" class="form-check-label">STAFF</label>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="form-group row">
+                        <label for="" class="col-sm-2 col-form-label">비밀번호</label>
+                        <div class="col-sm-10">
+                            <input type="password" name="pw" id="pw1" class="form-control" style="ime-mode:disabled;">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="" class="col-sm-2 col-form-label">비밀번호 확인</label>
+                        <div class="col-sm-10">
+                            <input type="password" name="pwch" id="pw2" class="form-control" style="ime-mode:disabled;">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="" class="col-sm-2 col-form-label">이메일</label>
+                        <div class="col-sm-10">
+                            <input type="email" name="email" value="" class="form-control" style="ime-mode:disabled;" placeholder="이메일은 비밀번호 찾기에 이용됩니다.">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="" class="col-sm-2 col-form-label">동의</label>
+                        <div class="col-sm-10">
+                            <div class="form-check mt-2">
+                                <input type="checkbox" class="form-check-input" name="agree" id="agree">
+                                <label for="">개인정보 제공에 동의합니다.</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <button type="submit" id="submit" class="btn btn-primary mt-2">가입하기</button>
+                    </div>
+                </form>
+                <script type="text/javascript">
+                    $(document).ready(function(){
+                       $("form").submit(function(){
+                           var identy = $("input[name='identy']");
+                           if(identy.val() == ""){
+                               alert("아이디를 입력하세요. 코드업 아이디와 일치시켜 주시기 바랍니다.");
+                               identy.focus();
+                               return false;
+                           }
 
+                           var name = $("input[name='name']");
+                           if(name.val() == ""){
+                               alert("이름을 입력하세요.");
+                               name.focus();
+                               return false;
+                           }
 
-         </script>
-         <form method="post" action="register_ok.php" name="registerform" id="registerform" class="container">
-             <div class="form-group row">
-                 <label for="" class="col-sm-2 col-form-label">아이디</label>
-                 <div class="col-sm-10">
-                     <input type="text" id="identy" name="identy" style="ime-mode:active;" class="form-control" placeholder="코드업 아이디와 일치시켜 주시기 바랍니다.">
-                     <span id="id-check"><span class="text-danger">아이디를 입력하세요.</span</span>
-                     <!-- <a href="#">중복확인</a> -->
-                 </div>
-             </div>
-             <div class="form-group row">
-                 <label for="" class="col-sm-2 col-form-label">이름</label>
-                 <div class="col-sm-10">
-                     <input type="text" name="name" class="form-control" style="ime-mode:disabled;">
-                 </div>
-             </div>
-             <div class="form-group row">
-                 <label for="" class="col-sm-2 col-form-label">기수</label>
-                 <div class="col-sm-10">
-                     <div class="form-check form-check-inline">
-                         <input type="radio" name="year" id="year1" value="1기" class="form-check-input">
-                         <label for="year1" class="form-check-label">1기</label>
-                     </div>
-                     <div class="form-check form-check-inline">
-                         <input type="radio" name="year" id="year2" value="2기" class="form-check-input">
-                         <label for="year2" class="form-check-label">2기</label>
-                     </div>
-                     <div class="form-check form-check-inline">
-                         <input type="radio" name="year" id="yearstaff" value="STAFF" class="form-check-input" disabled>
-                         <label for="yearstaff" class="form-check-label">STAFF</label>
-                     </div>
-                 </div>
-             </div>
-             <hr>
-             <div class="form-group row">
-                 <label for="" class="col-sm-2 col-form-label">비밀번호</label>
-                 <div class="col-sm-10">
-                     <input type="password" name="pw" id="pw1" class="form-control" style="ime-mode:disabled;">
-                 </div>
-             </div>
-             <div class="form-group row">
-                 <label for="" class="col-sm-2 col-form-label">비밀번호 확인</label>
-                 <div class="col-sm-10">
-                     <input type="password" name="pwch" id="pw2" class="form-control" style="ime-mode:disabled;">
-                 </div>
-             </div>
-             <div class="form-group row">
-                 <label for="" class="col-sm-2 col-form-label">이메일</label>
-                 <div class="col-sm-10">
-                     <input type="email" name="email" value="" class="form-control" style="ime-mode:disabled;" placeholder="이메일은 비밀번호 찾기에 이용됩니다.">
-                 </div>
-             </div>
-             <div class="form-group row">
-                 <label for="" class="col-sm-2 col-form-label">동의</label>
-                 <div class="col-sm-10">
-                     <div class="form-check mt-2">
-                         <input type="checkbox" class="form-check-input" name="agree" id="agree">
-                         <label for="">개인정보 제공에 동의합니다.</label>
-                     </div>
-                 </div>
-             </div>
-             <div class="col-auto">
-                 <button type="submit" id="submit" class="btn btn-primary mt-2">가입하기</button>
-             </div>
-         </form>
+                           var year = document.getElementsByName('year');
+                           var sel_type = null;
+                           for(var i=0; i<year.length; i++){
+                               if(year[i].checked == true){
+                                   sel_type = year[i].value;
+                               }
+                           }
+                           if(sel_type == null){
+                               alert("기수를 선택해주세요.");
+                               return false;
+                           }
+
+                           var pwd1 = $("input[name='pw']");
+                           var pwd2 = $("input[name='pwch']");
+                           if(pwd1.val() == ""){
+                               alert("비밀번호를 입력하세요!");
+                               pwd1.focus();
+                               return false;
+                           }
+                           if(pwd1.val().search(/\s/) != -1){
+                               alert("비밀번호는 공백 없이 입력해주세요.");
+                               pwd1.focus();
+                               return false;
+                           }
+                           if(pwd2.val == ""){
+                               alert("비밀번호를 한번 더 입력해주세요.");
+                               pwd2.focus();
+                               return false;
+                           }
+                           if(pwd1.val() !== pwd2.val()){
+                               alert("비밀번호가 일치하지 않습니다.");
+                               pwd2.focus();
+                               return false;
+                           }
+                           if(pwd1.val().length < 8 || pwd1.val().length > 20) {
+                               alert("비밀번호는 8~20자 이내로 입력해주세요.");
+                               pwd1.focus();
+                               return false;
+                           }
+
+                           var email = $("input[name='email']");
+                           if(email.val() == ''){
+                               alert('이메일을 입력하세요');
+                               email.focus();
+                               return false;
+                           } else {
+                               var emailRegex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+                               if (!emailRegex.test(email.val())) {
+                                   alert('이메일 주소가 유효하지 않습니다. 다시 한번 확인해주세요.');
+                                   email.focus();
+                                   return false;
+                               }
+                           }
+
+                           if($("input:checkbox[name='agree']").is(":checked") == false) {
+                               alert('개인정보 제공에 동의해주세요.');
+                               $("input[name='agree']").focus();
+                               return false;
+                           }
+
+                       });
+                    });
+                </script>
+                <?php
+            } else {
+                ?>
+        <div class="container">
+            <span>이미 로그인되어있습니다!</span>
+        </div>
+                <?php
+            }
+         ?>
      </main>
      <hr>
      <footer class="container">
@@ -174,85 +271,6 @@
              All Rights Reserved
          </h6>
      </footer>
-     <script type="text/javascript">
-         $(document).ready(function(){
-            $("form").submit(function(){
-                var identy = $("input[name='identy']");
-                if(identy.val() == ""){
-                    alert("아이디를 입력하세요. 코드업 아이디와 일치시켜 주시기 바랍니다.");
-                    identy.focus();
-                    return false;
-                }
 
-                var name = $("input[name='name']");
-                if(name.val() == ""){
-                    alert("이름을 입력하세요.");
-                    name.focus();
-                    return false;
-                }
-
-                var year = document.getElementsByName('year');
-                var sel_type = null;
-                for(var i=0; i<year.length; i++){
-                    if(year[i].checked == true){
-                        sel_type = year[i].value;
-                    }
-                }
-                if(sel_type == null){
-                    alert("기수를 선택해주세요.");
-                    return false;
-                }
-
-                var pwd1 = $("input[name='pw']");
-                var pwd2 = $("input[name='pwch']");
-                if(pwd1.val() == ""){
-                    alert("비밀번호를 입력하세요!");
-                    pwd1.focus();
-                    return false;
-                }
-                if(pwd1.val().search(/\s/) != -1){
-                    alert("비밀번호는 공백 없이 입력해주세요.");
-                    pwd1.focus();
-                    return false;
-                }
-                if(pwd2.val == ""){
-                    alert("비밀번호를 한번 더 입력해주세요.");
-                    pwd2.focus();
-                    return false;
-                }
-                if(pwd1.val() !== pwd2.val()){
-                    alert("비밀번호가 일치하지 않습니다.");
-                    pwd2.focus();
-                    return false;
-                }
-                if(pwd1.val().length < 8 || pwd1.val().length > 20) {
-                    alert("비밀번호는 8~20자 이내로 입력해주세요.");
-                    pwd1.focus();
-                    return false;
-                }
-
-                var email = $("input[name='email']");
-                if(email.val() == ''){
-                    alert('이메일을 입력하세요');
-                    email.focus();
-                    return false;
-                } else {
-                    var emailRegex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-                    if (!emailRegex.test(email.val())) {
-                        alert('이메일 주소가 유효하지 않습니다. 다시 한번 확인해주세요.');
-                        email.focus();
-                        return false;
-                    }
-                }
-
-                if($("input:checkbox[name='agree']").is(":checked") == false) {
-                    alert('개인정보 제공에 동의해주세요.');
-                    $("input[name='agree']").focus();
-                    return false;
-                }
-
-            });
-         });
-     </script>
 </body>
 </html>

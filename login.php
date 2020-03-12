@@ -88,25 +88,41 @@
                      </li>
                  </ul>
                  <ul class="navbar-nav ml-auto">
-                     <li class="nav-item"><a href="register.php" class="nav-link">회원가입</a></li>
-                     <li class="nav-item"><a href="login.php" class="nav-link">로그인</a></li>
+                     <?php
+                        if(isset($_SESSION['id'])){
+                            echo "<li class=\"nav-item\"><a href=\"profile.php?id={$_SESSION['id']}\" class=\"nav-link\">프로필</a></li>";
+                            echo "<li class=\"nav-item\"><a href=\"modify.php\" class=\"nav-link\">정보수정</a></li>";
+                            echo "<li class=\"nav-item\"><a href=\"logout.php\" class=\"nav-link\">로그아웃</a></li>";
+                        } else {
+                            echo "<li class=\"nav-item\"><a href=\"register.php\" class=\"nav-link\">회원가입</a></li>";
+                            echo "<li class=\"nav-item\"><a href=\"login.php\" class=\"nav-link\">로그인</a></li>";
+                        }
+                     ?>
                  </ul>
              </div>
          </nav>
      </header>
      <main role="main">
          <div class="container mt-5 mb-5">
-             <form class="form-signin" method="post" action="login_ok.php">
-                 <h3 class="form-signin-heading text-center mt-5">
-                     마음의 준비를 <br>단단히 하시기 바랍니다.
-                 </h3>
-                  <label for="id" class="sr-only">아이디</label>
-                  <input type="text" name="id" id="id" class="form-control" placeholder="아이디" required autofocus>
-                  <label for="pw" class="sr-only">패스워드</label>
-                  <input type="password" name="pw" id="pw" class="form-control" placeholder="패스워드" required>
-                  <button class="btn btn-lg btn-primary btn-block" type="submit">로그인</button>
-                  <a href="password.php">비밀번호를 잃어버리셨습니까?</a>
-            </form>
+             <?php
+                if(!isset($_SESSION['id'])){
+?>
+                    <form class="form-signin" method="post" action="login_ok.php">
+                        <h3 class="form-signin-heading text-center mt-5">
+                            Saturday-Night-Coding<br>로그인
+                        </h3>
+                         <label for="id" class="sr-only">아이디</label>
+                         <input type="text" name="id" id="id" class="form-control" placeholder="아이디" required autofocus>
+                         <label for="pw" class="sr-only">패스워드</label>
+                         <input type="password" name="pw" id="pw" class="form-control" placeholder="패스워드" required>
+                         <button class="btn btn-lg btn-primary btn-block" type="submit">로그인</button>
+                         <a href="password.php">비밀번호를 잃어버리셨습니까?</a>
+                    </form>
+<?php
+                } else {
+                    echo "<span>이미 로그인되어있습니다!</span>";
+                }
+             ?>
         </div>
      </main>
      <hr>

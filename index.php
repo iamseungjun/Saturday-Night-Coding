@@ -71,16 +71,12 @@
                      <?php
                         if(isset($_SESSION['id'])){
                             echo "<li class=\"nav-item\"><a href=\"profile.php?id={$_SESSION['id']}\" class=\"nav-link\">프로필</a></li>";
+                            echo "<li class=\"nav-item\"><a href=\"modify.php\" class=\"nav-link\">정보수정</a></li>";
                             echo "<li class=\"nav-item\"><a href=\"logout.php\" class=\"nav-link\">로그아웃</a></li>";
                         } else {
                             echo "<li class=\"nav-item\"><a href=\"register.php\" class=\"nav-link\">회원가입</a></li>";
                             echo "<li class=\"nav-item\"><a href=\"login.php\" class=\"nav-link\">로그인</a></li>";
                         }
-                        $to = "bi0416@naver.com";
-                        $subject = "PHP를 통한 메일 발송";
-                        $contents = "PHP main() 테스트";
-                        $headers = "From: leezeunjun@gmail.com\r\n";
-                        // mail($to, $subject, $contents, $headers);
                      ?>
                  </ul>
              </div>
@@ -88,7 +84,6 @@
      </header>
      <main role="main">
          <div class="container text-center">
-             <div class="h3 mt-4">&nbsp;</div>
              <div class="h3 mt-4 mb-4">다음 대회</div>
              <div class="jumbotron">
                  <p class="lead">1시즌 1차 배치</p>

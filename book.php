@@ -70,8 +70,8 @@
                  <ul class="navbar-nav ml-auto">
                      <?php
                         if(isset($_SESSION['id'])){
-                            echo "<li class=\"nav-item\"><a href=\"profile.php?id=\" class=\"nav-link\">프로필</a></li>";
-							echo "<li class=\"nav-item\"><a href=\"modify.php\" class=\"nav-link\">정보수정</a></li>";
+                            echo "<li class=\"nav-item\"><a href=\"profile.php?id={$_SESSION['id']}\" class=\"nav-link\">프로필</a></li>";
+                            echo "<li class=\"nav-item\"><a href=\"modify.php\" class=\"nav-link\">정보수정</a></li>";
                             echo "<li class=\"nav-item\"><a href=\"logout.php\" class=\"nav-link\">로그아웃</a></li>";
                         } else {
                             echo "<li class=\"nav-item\"><a href=\"register.php\" class=\"nav-link\">회원가입</a></li>";
@@ -135,7 +135,7 @@
                          <div class="card-body">
                              <div class="h5 card-title"><a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9791188612130&orderClick=LEa&Kc=">Do it! 자료구조와 함께 배우는 알고리즘 입문: C 언어 편</a></div>
                              <div class="card-text">C를 입문했다면, 이제 자료구조와 알고리즘을 공부해보자. 이 책도 간결하고 그림으로 되어있어 자료구조와 알고리즘을 이해하기 쉽다. 단점은 알고리즘을 헤더파일부터 작성해 CodeUp에서 사용하기에는 부적절할수도
-                             있으니 잘 리팩토링 해볼것.</div>
+                             있으니 잘 리팩토링 해볼것. 근데 오류가 많다. 조만간 삭제예정.</div>
                          </div>
                      </div>
                  </div>

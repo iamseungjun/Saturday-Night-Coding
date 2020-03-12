@@ -91,6 +91,7 @@
                      <?php
                        if(isset($_SESSION['id'])){
                            echo "<li class=\"nav-item\"><a href=\"profile.php?id={$_SESSION['id']}\" class=\"nav-link\">프로필</a></li>";
+                           echo "<li class=\"nav-item\"><a href=\"modify.php\" class=\"nav-link\">정보수정</a></li>";
                            echo "<li class=\"nav-item\"><a href=\"logout.php\" class=\"nav-link\">로그아웃</a></li>";
                        } else {
                            echo "<li class=\"nav-item\"><a href=\"register.php\" class=\"nav-link\">회원가입</a></li>";
@@ -103,18 +104,26 @@
      </header>
      <main role="main">
          <div class="container mt-5 mb-5">
-             <form class="form-signin" method="post" action="password_ok.php">
-                 <h3 class="form-signin-heading text-center mt-5">
-                     비밀번호 찾기
-                 </h3>
-                  <label for="id" class="sr-only">아이디</label>
-                  <input type="text" name="id" id="id" class="form-control" placeholder="아이디" required autofocus>
-                  <label for="text" class="sr-only">이름</label>
-                  <input type="text" name="name" id="name" class="form-control" placeholder="이름" required>
-                  <label for="email" class="sr-only">이메일</label>
-                  <input type="email" name="email" id="email" class="form-control" placeholder="이메일" required>
-                  <button class="btn btn-lg btn-danger btn-block" type="submit">찾기</button>
-            </form>
+             <?php
+                if(!isset($_SESSION['id'])){
+                    ?>
+                    <form class="form-signin" method="post" action="password_ok.php">
+                        <h3 class="form-signin-heading text-center mt-5">
+                            비밀번호 찾기
+                        </h3>
+                         <label for="id" class="sr-only">아이디</label>
+                         <input type="text" name="id" id="id" class="form-control" placeholder="아이디" required autofocus>
+                         <label for="text" class="sr-only">이름</label>
+                         <input type="text" name="name" id="name" class="form-control" placeholder="이름" required>
+                         <label for="email" class="sr-only">이메일</label>
+                         <input type="email" name="email" id="email" class="form-control" placeholder="이메일" required>
+                         <button class="btn btn-lg btn-danger btn-block" type="submit">찾기</button>
+                    </form>
+                    <?php
+                } else {
+                    echo "<span>이미 로그인되어있습니다!</span>";
+                }
+             ?>
         </div>
      </main>
      <hr>

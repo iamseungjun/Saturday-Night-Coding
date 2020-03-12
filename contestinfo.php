@@ -65,8 +65,8 @@
                  <ul class="navbar-nav ml-auto">
                      <?php
                         if(isset($_SESSION['id'])){
-                            echo "<li class=\"nav-item\"><a href=\"profile.php?id=\" class=\"nav-link\">프로필</a></li>";
-							echo "<li class=\"nav-item\"><a href=\"modify.php\" class=\"nav-link\">정보수정</a></li>";
+                            echo "<li class=\"nav-item\"><a href=\"profile.php?id={$_SESSION['id']}\" class=\"nav-link\">프로필</a></li>";
+                            echo "<li class=\"nav-item\"><a href=\"modify.php\" class=\"nav-link\">정보수정</a></li>";
                             echo "<li class=\"nav-item\"><a href=\"logout.php\" class=\"nav-link\">로그아웃</a></li>";
                         } else {
                             echo "<li class=\"nav-item\"><a href=\"register.php\" class=\"nav-link\">회원가입</a></li>";
@@ -79,7 +79,6 @@
      </header>
      <main role="main">
          <div class="container">
-             <div class="h3 mt-4 mb-4">&nbsp;</div>
              <div class="h3 text-center mt-4 mb-4">대회안내</div>
          </div>
          <div class="container">
