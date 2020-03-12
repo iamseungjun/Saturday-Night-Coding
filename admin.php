@@ -49,6 +49,9 @@
                          <a href="dailyresult.php" class="nav-link">오늘의 대회 결과</a>
                      </li>
                      <li class="nav-item">
+                         <a href="notice.php" class="nav-link">공지사항</a>
+                     </li>
+                     <li class="nav-item">
                          <a href="contestinfo.php" class="nav-link">대회안내</a>
                      </li>
                      <li class="nav-item dropdown">
@@ -100,6 +103,9 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="pills-date-tab" data-toggle="pill" href="#pills-date" role="tab" aria-controls="pills-date" aria-selected="false">일정관리</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="pills-date-tab" data-toggle="pill" href="#pills-notice" role="tab" aria-controls="pills-notice" aria-selected="false">공지관리</a>
                 </li>
             </ul>
             <div class="tab-content" id="pills-tabContent">
@@ -174,9 +180,9 @@
                     <table id="applicationlist" class="table tablesorter tablesorter-default">
                         <thead>
                             <tr class="tablesorter-headerRow" role="row">
-                                <th class="tablesorter-header" scope="col" role="columnheader" aria-disabled="false" aria-controls="exceptionlist" unselectable="off" aria-sort="none">번호</th>
-                                <th class="tablesorter-header" scope="col" role="columnheader" aria-disabled="false" aria-controls="exceptionlist" unselectable="off" aria-sort="none">아이디</th>
-                                <th class="tablesorter-header" scope="col" role="columnheader" aria-disabled="true" aria-controls="exceptionlist" unselectable="off" aria-sort="none">확인</th>
+                                <th class="tablesorter-header" scope="col" role="columnheader" aria-disabled="false" aria-controls="applicationlist" unselectable="off" aria-sort="none">번호</th>
+                                <th class="tablesorter-header" scope="col" role="columnheader" aria-disabled="false" aria-controls="applicationlist" unselectable="off" aria-sort="none">아이디</th>
+                                <th class="tablesorter-header" scope="col" role="columnheader" aria-disabled="true" aria-controls="applicationlist" unselectable="off" aria-sort="none">확인</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -211,6 +217,7 @@
                         })
                     </script>
                     <div class="container mt-2">
+                        <!-- DON'T TOUCH THIS PART : AJAX SPACE -->
                         <ol id="applicationContents">
 
                         </ol>
@@ -218,6 +225,28 @@
                 </div>
                 <div class="tab-pane fade" id="pills-date" role="tabpanel" aria-labelledby="pills-date-tab">
                     <!------>
+                </div>
+                <div class="tab-pane fade" id="pills-notice" role="tabpanel" aria-labelledby="pills-notice-tab">
+                    <table id="noticelist" class="table tablesorter tablesorter-default">
+                        <thead>
+                            <tr class="tablesorter-headerRow" role="row">
+                                <th class="tablesorter-header" scope="col" role="columnheader" aria-disabled="false" aria-controls="noticelist" unselectable="off" aria-sort="none">번호</th>
+                                <th class="tablesorter-header" scope="col" role="columnheader" aria-disabled="false" aria-controls="noticelist" unselectable="off" aria-sort="none">제목</th>
+                                <th class="tablesorter-header" scope="col" role="columnheader" aria-disabled="false" aria-controls="noticelist" unselectable="off" aria-sort="none">날짜</th>
+                                <th class="tablesorter-header" scope="col" role="columnheader" aria-disabled="true" aria-controls="noticelist" unselectable="off" aria-sort="none">확인</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                                $sql = "SELECT * FROM notice ORDER BY num";
+                                $result = mysqli_query($conn, $sql);
+
+                                while($row = mysqli_fetch_array($result)){
+                                    echo "<tr role=\"row\"><th scope=\"row\">".$row['num']."</th><td>".$row['title']."</td><td>".$row['date']."</td><td><a href=\"modify_notice.php?num=".$row['num']."\" class=\"btn btn-danger\">수정</a></td></tr>";
+                                }
+                            ?>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
