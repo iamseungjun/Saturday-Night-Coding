@@ -88,13 +88,12 @@
          <div class="container mt-4 mb-4">&nbsp;</div>
          <?php
              if(isset($_SESSION['id']) && $_SESSION['id']=="bi0416"){
-                try {
-                    if($_GET['num']>0){
-                        $sql = "SELECT * FROM notice WHERE num={$_GET['num']}";
-                        $result = mysqli_query($conn, $sql);
-                        $row = mysqli_fetch_array($result);
-                    }
-                } catch (Exception $e) {  }
+                 $t = (isset($_GET["num"]) && $_GET["num"]) ? $_GET["num"] : NULL;
+                 if($t!=NULL){
+                     $sql = "SELECT * FROM notice WHERE num={$_GET['num']}";
+                     $result = mysqli_query($conn, $sql);
+                     $row = mysqli_fetch_array($result);
+                 }
                     ?>
         <div class="container h1 mt-4 mb-4 text-center">공지 생성/수정</div>
         <div class="container">
@@ -102,13 +101,13 @@
                 <div class="form-group row">
                     <label for="" class="col-sm-2 col-form-label">제목</label>
                     <div class="col-sm-10">
-                        <input type="text" id="title" name="title" value="<?php try {if($_GET['num']>0){ echo $row['title']; }} catch (Exception $e) { }?>" style="ime-mode:active;" class="form-control">
+                        <input type="text" id="title" name="title" value="<?php if($t!=NULL){echo $row['title'];} ?>" style="ime-mode:active;" class="form-control">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="" class="col-sm-2 col-form-label">내용</label>
                     <div class="col-sm-10">
-                        <textarea class="form-control" name="content" rows="10" cols="100" value="<?php try {if($_GET['num']>0){ echo $row['content']; }} catch (Exception $e) { }?>"></textarea>
+                        <textarea class="form-control" name="content" rows="8" cols="80" value="<?php if($t!=NULL){echo $row['content'];} ?>"></textarea>
                     </div>
                 </div>
                 <div class="col-auto">
