@@ -6,11 +6,11 @@
         'contest'
     );
 
-    $name = $_POST['name'];
+    $id = $_SESSION['id'];
     $passwd = password_hash($_POST['pw'], PASSWORD_DEFAULT);
     $email = $_POST['email'];
 
-    $sql = "UPDATE member SET pw='{$password}', email='{$email}' WHERE name='{$name}'";
+    $sql = "UPDATE member SET pw='{$password}', email='{$email}' WHERE id='{$id}'";
     $result = mysqli_query($conn, $sql);
 ?>
     <meta charset="utf-8">

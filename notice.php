@@ -44,6 +44,9 @@
                          <a href="dailyresult.php" class="nav-link">오늘의 대회 결과</a>
                      </li>
                      <li class="nav-item">
+                         <a href="notice.php" class="nav-link">공지사항</a>
+                     </li>
+                     <li class="nav-item">
                          <a href="contestinfo.php" class="nav-link">대회안내</a>
                      </li>
                      <li class="nav-item dropdown">
@@ -79,8 +82,8 @@
      <main role="main">
          <div class="h3 text-center mt-4 mb-4">공지사항</div>
          <div class="container">
-             <table class="table">
-                 <thead>
+             <table class="table table-striped table-hover">
+                 <thead class="thead-light">
                      <tr>
                          <th scope="col">번호</th>
                          <th scope="col">제목</th>
@@ -99,7 +102,7 @@
                         $result = mysqli_query($conn, $sql);
 
                         while($row = mysqli_fetch_array($result)){
-                            echo "<tr role=\"row\"><th scope=\"row\">".$row['num']."</th><td>".$row['title']."</td><td>".$row['date']."</td></tr>";
+                            echo "<tr role=\"row\"><th scope=\"row\">".$row['num']."</th><td><a href=\"noticepage.php?num=".$row['num']."\">".$row['title']."</a></td><td>".$row['date']."</td></tr>";
                         }
                     ?>
                  </tbody>

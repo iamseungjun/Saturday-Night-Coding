@@ -45,6 +45,9 @@
                          <a href="dailyresult.php" class="nav-link">오늘의 대회 결과</a>
                      </li>
                      <li class="nav-item">
+                         <a href="notice.php" class="nav-link">공지사항</a>
+                     </li>
+                     <li class="nav-item">
                          <a href="contestinfo.php" class="nav-link">대회안내</a>
                      </li>
                      <li class="nav-item dropdown">

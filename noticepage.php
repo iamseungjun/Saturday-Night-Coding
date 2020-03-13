@@ -13,14 +13,10 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:500&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/7cc77c19eb.js" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <title>SNC Contest</title>
     <style media="screen">
         * {
             font-family: 'Noto Sans KR', sans-serif;
-        }
-        .introduce-link a:hover {
-            text-decoration: none;
         }
     </style>
 </head>
@@ -84,87 +80,28 @@
          </nav>
      </header>
      <main role="main">
-         <div class="container mt-4">
-             <div class="container">
-                 <?php
-                    $id = $_GET['id'];
-
-                    $conn = mysqli_connect(
-                        'localhost',
-                        'root',
-                        'E9LWMIZotVGX',
-                        'contest'
-                    );
-                    $sql = "SELECT * FROM member WHERE id='$id'";
-                    $result = mysqli_query($conn, $sql);
-                    $row = mysqli_fetch_array($result);
-                    $year = $row['year'];
-                    $name = $row['name'];
-                    $tier = $row['tier'];
-                    if(!empty($id) && !empty($row)){
-                        if($tier == 'Admin') {
-                            $color = "#FF0000";
-                        } else if($tier == 'Gold') {
-                            $color = "#FFD700";
-                        } else if($tier == 'Silver') {
-                            $color = "#C0C0C0";
-                        } else if($tier == 'Bronze') {
-                            $color = "#CD7F32";
-                        } else {
-                            $color = "#808080";
-                        }
-
-                        // echo $id;
-                        echo "<h2 style=\"color:$color\">$year-$name</h2>";
-                        echo "<a href=\"https://codeup.kr/userinfo.php?user=$id\" class=\"text-secondary\">-$id</a>"
-                 ?>
-             </div>
-             <div id="chart" class="container" style="height: 500px; width: 100%;"></div>
-             <script>
-                 google.charts.load('current', {'packages' : ['corechart']});
-                 google.charts.setOnLoadCallback(drawChart);
-
-                 function drawChart(){
-                     var data = google.visualization.arrayToDataTable([
-                         ['날짜', '레이팅'],
-                         ['19-03-02', 0],
-                         ['19-03-03', 50],
-                         ['19-03-04', 100],
-                         ['19-03-05', 200],
-                         ['19-03-06', 250],
-                         ['19-03-07', 230],
-                         ['19-03-08', 350],
-                         ['19-03-09', 450],
-                         ['19-03-10', 500],
-                         ['19-03-11', 600]
-                     ]);
-
-                     var options = {
-                        title :  '레이팅 현황',
-                        legend : {position: 'top', alignment: 'center'},
-                        animation : {
-                            startup : true,
-                            duration : 4000,
-                            easing : 'inAndOut'
-                        },
-                        chartArea : {
-                            width : '90%',
-                            height : '50%'
-                        },
-                        pointsVisible : 'True',
-                        colors : ['green']
-                     };
-
-                    var chart = new google.visualization.LineChart(document.getElementById('chart'));
-
-                    chart.draw(data, options);
-                 }
-             </script>
-         <?php
-             } else {
-                 echo "잘못된 사용자입니다!";
+         <div class="h3 text-center mt-4 mb-4">공지사항</div>
+         <div class="container">
+             <?php
+                 if($_GET['num']==NULL){
+                     echo "<span>정확한 공지사항을 선택하시기 바랍니다.</span>";
+                 } else {
+                     $conn = mysqli_connect(
+                         'localhost',
+                         'root',
+                         'E9LWMIZotVGX',
+                         'contest'
+                     );
+                     $sql = "SELECT * FROM notice WHERE num=$_GET['num']";
+                     $result = mysqli_query($conn, $sql);
+                     $row = mysqli_fetch_array($result)
+             ?>
+             <div class="h3"><?php echo "$row['title']"; ?></div>
+             <div class="container">날짜 : <?php echo "$row['date']"; ?> | 번호 : <?php echo "$row['num']"; ?></div>
+             <div class="container"><p><?php echo "row['content']"; ?></p></div>
+             <?php
              }
-         ?>
+             ?>
          </div>
      </main>
      <hr>

@@ -49,6 +49,9 @@
                          <a href="dailyresult.php" class="nav-link">오늘의 대회 결과</a>
                      </li>
                      <li class="nav-item">
+                         <a href="notice.php" class="nav-link">공지사항</a>
+                     </li>
+                     <li class="nav-item">
                          <a href="contestinfo.php" class="nav-link">대회안내</a>
                      </li>
                      <li class="nav-item dropdown">
@@ -134,17 +137,14 @@
                     <button type="submit" id="submit" class="btn btn-primary mt-2">수정</button>
                 </div>
             </form>
-            <button class="btn btn-danger mt-2" onclick="delete()">삭제</button>
-            <script>
-                function delete(){
-                    var d = confirm("정말로 삭제하시겠습니까? ID : <?php echo $_GET['id']; ?>");
-                    if(d == true) {
-                        location.href = "deletemember.php?id=<?php echo $_GET['id']; ?>";
-                    } else {
-                        history.back();
-                    }
+            <button class="btn btn-danger mt-2" onclick="
+                var d = confirm('정말로 삭제하시겠습니까? ID : <?php echo $_GET['id']; ?>');
+                if(d == true) {
+                    location.href = 'deletemember.php?id=<?php echo $_GET['id']; ?>';
+                } else {
+                    history.back();
                 }
-            </script>
+            ">삭제</button>
         </div>
              <?php
              } else {

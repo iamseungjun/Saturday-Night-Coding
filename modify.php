@@ -47,6 +47,9 @@
                          <a href="dailyresult.php" class="nav-link">오늘의 대회 결과</a>
                      </li>
                      <li class="nav-item">
+                         <a href="notice.php" class="nav-link">공지사항</a>
+                     </li>
+                     <li class="nav-item">
                          <a href="contestinfo.php" class="nav-link">대회안내</a>
                      </li>
                      <li class="nav-item dropdown">
@@ -101,7 +104,7 @@
                    <div class="form-group row">
                        <label for="" class="col-sm-2 col-form-label">이름</label>
                        <div class="col-sm-10">
-                           <span name="name" class="form-control"><?php echo "$row['name']"; ?></span>
+                           <span class="form-control"><?php echo "$row['name']"; ?></span>
                        </div>
                    </div>
                    <div class="form-group row">
