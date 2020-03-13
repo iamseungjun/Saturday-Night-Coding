@@ -89,7 +89,7 @@
          <?php
              if(isset($_SESSION['id']) && $_SESSION['id']=="bi0416"){
                  if($_GET['num']){
-                     $sql = "SELECT * FROM notice WHERE num=$_GET['num']";
+                     $sql = "SELECT * FROM notice WHERE num={$_GET['num']}";
                      $result = mysqli_query($conn, $sql);
                      $row = mysqli_fetch_array($result);
                  } else {

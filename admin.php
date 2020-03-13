@@ -247,6 +247,7 @@
                             ?>
                         </tbody>
                     </table>
+                    <a href="makenotice.php" class="btn btn-primary">공지 만들기</a>
                 </div>
             </div>
         </div>
