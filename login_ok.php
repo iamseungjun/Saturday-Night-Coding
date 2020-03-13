@@ -19,7 +19,8 @@
         if(password_verify($pw, $hash)){
             $_SESSION['id'] = $id;
             $ip = $_SERVER['REMOTE_ADDR'];
-            $sql = "INSERT INTO accesslog VALUES ('$ip', NOW())";
+            $sql = "INSERT INTO accesslog(ip, date, id) VALUES ('$ip', NOW(), '$id')";
+            $result = mysqli_query($conn, $sql);
             echo "<script>location.href='index.php';</script>";
         } else {
             echo '<script>alert("아이디 혹은 비밀번호가 잘못되었습니다."); history.back();</script>';
