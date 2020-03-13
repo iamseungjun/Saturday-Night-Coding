@@ -242,7 +242,7 @@
                                 $result = mysqli_query($conn, $sql);
 
                                 while($row = mysqli_fetch_array($result)){
-                                    echo "<tr role=\"row\"><th scope=\"row\">".$row['num']."</th><td>".$row['title']."</td><td>".$row['date']."</td><td><a href=\"modify_notice.php?num=".$row['num']."\" class=\"btn btn-danger\">수정</a></td></tr>";
+                                    echo "<tr role=\"row\"><th scope=\"row\">".$row['num']."</th><td>".$row['title']."</td><td>".$row['date']."</td><td><a href=\"makenotice.php?num=".$row['num']."\" class=\"btn btn-danger\">수정</a></td></tr>";
                                 }
                             ?>
                         </tbody>

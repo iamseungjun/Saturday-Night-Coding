@@ -91,7 +91,7 @@
                        'E9LWMIZotVGX',
                        'contest'
                    );
-                   $sql = "SELECT email FROM member WHERE id='{$_SESSION['id']}'";
+                   $sql = "SELECT * FROM member WHERE id='{$_SESSION['id']}'";
                    $result = mysqli_query($conn, $sql);
                    $row = mysqli_fetch_array($result);
                ?>
@@ -104,7 +104,7 @@
                    <div class="form-group row">
                        <label for="" class="col-sm-2 col-form-label">이름</label>
                        <div class="col-sm-10">
-                           <span class="form-control"><?php echo "$row['name']"; ?></span>
+                           <span class="form-control"><?php echo "{$row['name']}"; ?></span>
                        </div>
                    </div>
                    <div class="form-group row">
@@ -122,7 +122,7 @@
                    <div class="form-group row">
                        <label for="" class="col-sm-2 col-form-label">이메일</label>
                        <div class="col-sm-10">
-                           <input type="email" name="email" value="<?php echo "$row['email']"; ?>" class="form-control" placeholder="이메일은 비밀번호 찾기에 이용됩니다.">
+                           <input type="email" name="email" value="<?php echo "{$row['email']}"; ?>" class="form-control" placeholder="이메일은 비밀번호 찾기에 이용됩니다.">
                        </div>
                    </div>
                    <div class="col-auto">
