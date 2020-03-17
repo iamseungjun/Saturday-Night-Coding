@@ -47,6 +47,9 @@
                          <a href="notice.php" class="nav-link">공지사항</a>
                      </li>
                      <li class="nav-item">
+                         <a href="contestinfo.php" class="nav-link">대회안내</a>
+                     </li>
+                     <li class="nav-item">
                          <a href="codeupinfo.php" class="nav-link">코드업 사용방법</a>
                      </li>
                      <li class="nav-item dropdown">
@@ -80,30 +83,59 @@
          </nav>
      </header>
      <main role="main">
-         <div class="h3 text-center mt-4 mb-4">공지사항</div>
+         <?php
+             $t = (isset($_GET["tier"]) && $_GET["tier"]) ? $_GET["tier"] : NULL;
+             if($t!=NULL){
+                 $tier = $_GET['tier'];
+                 if($tier=="season"){
+                     $title = "시즌 배치";
+                 } else if($tier=="gold"){
+                     $title = "Gold";
+                 } else if($tier=="silver"){
+                     $title = "Silver";
+                 } else if($tier=="bronze"){
+                     $title = "Bronze";
+                 }
+         ?>
+         <div class="h3 text-center mt-4 mb-4">순위 : </div>
          <div class="container">
-             <?php
-                 $t = (isset($_GET["num"]) && $_GET["num"]) ? $_GET["num"] : NULL;
-                 if($t==NULL){
-                     echo "<span>정확한 공지사항을 선택하시기 바랍니다.</span>";
-                 } else {
-                     $conn = mysqli_connect(
-                         'localhost',
-                         'root',
-                         'E9LWMIZotVGX',
-                         'contest'
-                     );
-                     $sql = "SELECT * FROM notice WHERE num=$_GET['num']";
-                     $result = mysqli_query($conn, $sql);
-                     $row = mysqli_fetch_array($result)
-             ?>
-             <div class="h3"><?php echo "$row['title']"; ?></div>
-             <div class="container">날짜 : <?php echo "$row['date']"; ?> | 번호 : <?php echo "$row['num']"; ?></div>
-             <div class="container"><p><?php echo "row['content']"; ?></p></div>
-             <?php
-             }
-             ?>
+             <table class="table">
+                 <thead>
+                     <tr>
+                         <th scope="col">순위</th>
+                         <th scope="col">아이디</th>
+                         <th scope="col">이름</th>
+                         <th scope="col">레이팅</th>
+                         <th scope="col">티어</th>
+                     </tr>
+                 </thead>
+                 <tbody>
+
+                 </tbody>
+             </table>
+             <nav aria-label="Page navigation example">
+                 <ul class="pagination justify-content-center">
+                     <li class="page-item">
+                         <a href="#" class="page-link">
+                             <span aria-hidden="true">&laquo;</span>
+                         </a>
+                     </li>
+                     <li class="page-item active"><a href="#" class="page-link">1</a></li>
+                     <li class="page-item"><a href="#" class="page-link">2</a></li>
+                     <li class="page-item"><a href="#" class="page-link">3</a></li>
+                     <li class="page-item">
+                         <a href="#" class="page-link">
+                             <span aria-hidden="true">&raquo;</span>
+                         </a>
+                     </li>
+                 </ul>
+             </nav>
          </div>
+         <?php
+             } else {
+                  echo "<span>정확한 메뉴를 선택해주세요.</span>";
+             }
+         ?>
      </main>
      <hr>
      <footer class="container">

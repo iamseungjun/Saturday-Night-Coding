@@ -1,5 +1,11 @@
 <?php
-    session_start();
+   session_start();
+   $conn = mysqli_connect(
+       'localhost',
+       'root',
+       'E9LWMIZotVGX',
+       'contest'
+   );
 ?>
 <!DOCTYPE html>
 <html lang="ko">
@@ -11,14 +17,13 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.3/js/jquery.tablesorter.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:500&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/7cc77c19eb.js" crossorigin="anonymous"></script>
-    <title>SNC Contest</title>
-    <style media="screen">
-        * {
-            font-family: 'Noto Sans KR', sans-serif;
-        }
+    <style>
+        * { font-family: 'Noto Sans KR', sans-serif; }
     </style>
+    <title>SNC Contest</title>
 </head>
 <body>
     <header>
@@ -47,6 +52,9 @@
                          <a href="notice.php" class="nav-link">공지사항</a>
                      </li>
                      <li class="nav-item">
+                         <a href="contestinfo.php" class="nav-link">대회안내</a>
+                     </li>
+                     <li class="nav-item">
                          <a href="codeupinfo.php" class="nav-link">코드업 사용방법</a>
                      </li>
                      <li class="nav-item dropdown">
@@ -66,44 +74,61 @@
                  </ul>
                  <ul class="navbar-nav ml-auto">
                      <?php
-                        if(isset($_SESSION['id'])){
-                            echo "<li class=\"nav-item\"><a href=\"profile.php?id={$_SESSION['id']}\" class=\"nav-link\">프로필</a></li>";
-                            echo "<li class=\"nav-item\"><a href=\"modify.php\" class=\"nav-link\">정보수정</a></li>";
-                            echo "<li class=\"nav-item\"><a href=\"logout.php\" class=\"nav-link\">로그아웃</a></li>";
-                        } else {
-                            echo "<li class=\"nav-item\"><a href=\"register.php\" class=\"nav-link\">회원가입</a></li>";
-                            echo "<li class=\"nav-item\"><a href=\"login.php\" class=\"nav-link\">로그인</a></li>";
-                        }
+                       if(isset($_SESSION['id'])){
+                           echo "<li class=\"nav-item\"><a href=\"profile.php?id={$_SESSION['id']}\" class=\"nav-link\">프로필</a></li>";
+                           echo "<li class=\"nav-item\"><a href=\"modify.php\" class=\"nav-link\">정보수정</a></li>";
+                           echo "<li class=\"nav-item\"><a href=\"logout.php\" class=\"nav-link\">로그아웃</a></li>";
+                       } else {
+                           echo "<li class=\"nav-item\"><a href=\"register.php\" class=\"nav-link\">회원가입</a></li>";
+                           echo "<li class=\"nav-item\"><a href=\"login.php\" class=\"nav-link\">로그인</a></li>";
+                       }
                      ?>
                  </ul>
              </div>
          </nav>
      </header>
      <main role="main">
-         <div class="h3 text-center mt-4 mb-4">공지사항</div>
-         <div class="container">
+         <div class="container mt-4 mb-4">&nbsp;</div>
+         <?php
+             if(isset($_SESSION['id']) && $_SESSION['id']=="bi0416"){
+                    ?>
+        <div class="container h1 mt-4 mb-4 text-center">일정 생성</div>
+        <div class="container">
+            <form method="post" action="plan_ok.php" name="noticeform" id="noticeform" class="container">
+                <div class="form-group row">
+                    <label for="" class="col-sm-2 col-form-label">제목</label>
+                    <div class="col-sm-10">
+                        <input type="text" id="title" name="title" style="ime-mode:active;" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="" class="col-sm-2 col-form-label">날짜</label>
+                    <div class="col-sm-10">
+                        <input type="date" id="date" name="title" style="ime-mode:active;" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="" class="col-sm-2 col-form-label">시간</label>
+                    <div class="col-sm-10">
+                        <input type="time" value="19:00:00" id="time" name="title" style="ime-mode:active;" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="" class="col-sm-2 col-form-label">코드</label>
+                    <div class="col-sm-10">
+                        <input type="text" id="code" name="title" style="ime-mode:active;" class="form-control">
+                    </div>
+                </div>
+                <div class="col-auto">
+                    <button type="submit" id="submit" class="btn btn-primary mt-2">생성하기</button>
+                </div>
+            </form>
+        </div>
              <?php
-                 $t = (isset($_GET["num"]) && $_GET["num"]) ? $_GET["num"] : NULL;
-                 if($t==NULL){
-                     echo "<span>정확한 공지사항을 선택하시기 바랍니다.</span>";
-                 } else {
-                     $conn = mysqli_connect(
-                         'localhost',
-                         'root',
-                         'E9LWMIZotVGX',
-                         'contest'
-                     );
-                     $sql = "SELECT * FROM notice WHERE num=$_GET['num']";
-                     $result = mysqli_query($conn, $sql);
-                     $row = mysqli_fetch_array($result)
-             ?>
-             <div class="h3"><?php echo "$row['title']"; ?></div>
-             <div class="container">날짜 : <?php echo "$row['date']"; ?> | 번호 : <?php echo "$row['num']"; ?></div>
-             <div class="container"><p><?php echo "row['content']"; ?></p></div>
-             <?php
+             } else {
+                 echo "<div class=\"container mt-4 mb-4\">잘못된 접근입니다.</div>";
              }
-             ?>
-         </div>
+         ?>
      </main>
      <hr>
      <footer class="container">

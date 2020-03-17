@@ -10,6 +10,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" type="text/javascript"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:500&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/7cc77c19eb.js" crossorigin="anonymous"></script>
@@ -47,6 +48,9 @@
                          <a href="notice.php" class="nav-link">공지사항</a>
                      </li>
                      <li class="nav-item">
+                         <a href="contestinfo.php" class="nav-link">대회안내</a>
+                     </li>
+                     <li class="nav-item">
                          <a href="codeupinfo.php" class="nav-link">코드업 사용방법</a>
                      </li>
                      <li class="nav-item dropdown">
@@ -80,29 +84,25 @@
          </nav>
      </header>
      <main role="main">
-         <div class="h3 text-center mt-4 mb-4">공지사항</div>
          <div class="container">
-             <?php
-                 $t = (isset($_GET["num"]) && $_GET["num"]) ? $_GET["num"] : NULL;
-                 if($t==NULL){
-                     echo "<span>정확한 공지사항을 선택하시기 바랍니다.</span>";
-                 } else {
-                     $conn = mysqli_connect(
-                         'localhost',
-                         'root',
-                         'E9LWMIZotVGX',
-                         'contest'
-                     );
-                     $sql = "SELECT * FROM notice WHERE num=$_GET['num']";
-                     $result = mysqli_query($conn, $sql);
-                     $row = mysqli_fetch_array($result)
-             ?>
-             <div class="h3"><?php echo "$row['title']"; ?></div>
-             <div class="container">날짜 : <?php echo "$row['date']"; ?> | 번호 : <?php echo "$row['num']"; ?></div>
-             <div class="container"><p><?php echo "row['content']"; ?></p></div>
-             <?php
-             }
-             ?>
+             <div class="h3 text-center mt-4 mb-4">CodeUp 사용안내</div>
+         </div>
+         <div class="container">
+             <div class="h5">1. CodeUp 접속</div>
+             <div><a href="https://codeup.kr" target="_blank">CodeUp 알고리즘 트레이닝</a>에 접속합니다.</div>
+             <br>
+             <div class="h5">2. CodeUp 회원가입</div>
+             <div><a href="https://codeup.kr/registerpage.php" target="_blank">CodeUp 회원가입</a>을 진행합니다. <strong>반드시 학교 실습실에서 가입을 진행하세요.</strong></div>
+             <br>
+             <div class="h5">3. 문제 선택</div>
+             <div>자신이 풀고자 하는 문제를 선택합니다. 문제는 상단의 '문제' 또는 '문제집'을 통해 선택 가능합니다.</div>
+             <br>
+             <div class="h5">4. 코드 제출</div>
+             <div><strong>문제 설명과 입력 예시, 출력 예시를 반드시 확인</strong>한 후, 중앙의 <strong>소스 제출</strong>을 선택합니다.</div>
+             <br>
+             <div class="h5">5. 결과 확인</div>
+             <div>채점 상황에서 결과를 확인합니다.</div>
+             <br>
          </div>
      </main>
      <hr>

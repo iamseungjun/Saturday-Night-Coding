@@ -53,6 +53,9 @@
                      <li class="nav-item">
                          <a href="contestinfo.php" class="nav-link">대회안내</a>
                      </li>
+                     <li class="nav-item">
+                         <a href="codeupinfo.php" class="nav-link">코드업 사용방법</a>
+                     </li>
                      <li class="nav-item dropdown">
                          <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                              관리자가 추천하는 것들

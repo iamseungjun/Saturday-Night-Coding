@@ -55,6 +55,9 @@
                      <li class="nav-item">
                          <a href="contestinfo.php" class="nav-link">대회안내</a>
                      </li>
+                     <li class="nav-item">
+                         <a href="codeupinfo.php" class="nav-link">코드업 사용방법</a>
+                     </li>
                      <li class="nav-item dropdown">
                          <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                              관리자가 추천하는 것들
@@ -89,11 +92,16 @@
          <div class="container text-center">
              <div class="h3 mt-4 mb-4">다음 대회</div>
              <div class="jumbotron">
-                 <p class="lead">1시즌 1차 배치</p>
-                 <p class="lead">2020-05-09 19:00:00</p>
+                 <?php
+                    $sql = "SELECT * FROM plan ORDER BY DESC LIMIT 1";
+                    $result = mysqli_query($conn, $sql);
+                    $row = mysqli_fetch_array($result);
+                 ?>
+                 <p class="lead"><?php echo $row['title']; ?></p><!-- php echo title -->
+                 <p class="lead"><?php echo $row['date']; ?></p><!-- php echo datetime -->
                  <h1 class="display-4" id="demo">&nbsp;</h1>
                  <script type="text/javascript">
-                     var day= "May 9, 2020 19:00:00";
+                     var day= "<?php echo $row['date']; ?>";
                      var x = setInterval(function() {
                          var now = new Date().getTime();
                          var then = new Date(day).getTime();
@@ -113,102 +121,24 @@
          </div>
          <div class="container">
              <div class="h3 text-center mt-4 mb-4">
-                 지난 대회의 결과
-             </div>
-             <div class="card-group">
-                 <div class="card">
-                     <div class="card-body">
-                         <h5 class="card-title text-center">Bronze</h5>
-                         <div class="card-text">
-                             <div class="row">
-                                 <p class="ml-3">1기_이승준</p>
-                                 <p class="ml-auto mr-3">2,650</p>
-                             </div>
-                             <div class="row">
-                                 <p class="ml-3">1기_이승준</p>
-                                 <p class="ml-auto mr-3">2,650</p>
-                             </div>
-                         </div>
-                     </div>
-                 </div>
-                 <div class="card">
-                     <div class="card-body">
-                         <h5 class="card-title text-center">Silver</h5>
-                         <div class="card-text">
-                             <div class="row">
-                                 <p class="ml-3">1기_이승준</p>
-                                 <p class="ml-auto mr-3">2,650</p>
-                             </div>
-                             <div class="row">
-                                 <p class="ml-3">1기_이승준</p>
-                                 <p class="ml-auto mr-3">2,650</p>
-                             </div>
-                         </div>
-                     </div>
-                 </div>
-                 <div class="card">
-                     <div class="card-body">
-                         <h5 class="card-title text-center">Gold</h5>
-                         <div class="card-text">
-                             <div class="row">
-                                 <p class="ml-3">1기_이승준</p>
-                                 <p class="ml-auto mr-3">2,650</p>
-                             </div>
-                             <div class="row">
-                                 <p class="ml-3">1기_이승준</p>
-                                 <p class="ml-auto mr-3">2,650</p>
-                             </div>
-                         </div>
-                     </div>
-                 </div>
-             </div>
-         </div>
-         <div class="container">
-             <div class="h3 text-center mt-4 mb-4">
                  TOP 5
              </div>
              <div class="card-group">
                  <div class="card">
                      <div class="card-body">
-                         <h5 class="card-title text-center">Bronze</h5>
-                         <div class="row">
-                             <p class="ml-3">1기_이승준</p>
-                             <p class="ml-auto mr-3">2,650</p>
-                         </div>
-                         <div class="row">
-                             <p class="ml-3">1기_이승준</p>
-                             <p class="ml-auto mr-3">2,650</p>
-                         </div>
-                     </div>
-                 </div>
-                 <div class="card">
-                     <div class="card-body">
-                         <h5 class="card-title text-center">Silver</h5>
-                         <div class="card-text">
-                             <div class="row">
-                                 <p class="ml-3">1기_이승준</p>
-                                 <p class="ml-auto mr-3">2,650</p>
-                             </div>
-                             <div class="row">
-                                 <p class="ml-3">1기_이승준</p>
-                                 <p class="ml-auto mr-3">2,650</p>
-                             </div>
-                         </div>
-                     </div>
-                 </div>
-                 <div class="card">
-                     <div class="card-body">
-                         <h5 class="card-title text-center">Gold</h5>
-                         <div class="card-text">
-                             <div class="row">
-                                 <p class="ml-3">1기_이승준</p>
-                                 <p class="ml-auto mr-3">2,650</p>
-                             </div>
-                             <div class="row">
-                                 <p class="ml-3">1기_이승준</p>
-                                 <p class="ml-auto mr-3">2,650</p>
-                             </div>
-                         </div>
+                         <table class="table table-bordless text-center">
+                                 <?php
+                                     $sql = "SELECT * FROM member WHERE tier<>'Skill' AND tier<>'Admin' ORDER BY rating ASC LIMIT 5";
+                                     $result = mysqli_query($conn, $sql);
+                                     $i=1;
+                                     while($row = mysqli_fetch_array($result)){
+                                         $name = $row['name'];
+                                         $year = $row['year'];
+                                         $rating = $row['rating'];
+                                         echo "<tr><td>".$i.".</td><th>".$year."-".$name."</th><td>{number_format($rating)}</td></tr>";0
+                                     }
+                                 ?>
+                         </table>
                      </div>
                  </div>
              </div>

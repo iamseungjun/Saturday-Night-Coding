@@ -54,6 +54,9 @@
                      <li class="nav-item">
                          <a href="contestinfo.php" class="nav-link">대회안내</a>
                      </li>
+                     <li class="nav-item">
+                         <a href="codeupinfo.php" class="nav-link">코드업 사용방법</a>
+                     </li>
                      <li class="nav-item dropdown">
                          <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                              관리자가 추천하는 것들
@@ -224,7 +227,26 @@
                     </div>
                 </div>
                 <div class="tab-pane fade" id="pills-date" role="tabpanel" aria-labelledby="pills-date-tab">
-                    <!------>
+                    <table id="datelist" class="table tablesorter tablesorter-default">
+                        <thead>
+                            <tr class="tablesorter-headerRow" role="row">
+                                <th class="tablesorter-header" scope="col" role="columnheader" aria-disabled="false" aria-controls="datelist" unselectable="off" aria-sort="none">제목</th>
+                                <th class="tablesorter-header" scope="col" role="columnheader" aria-disabled="false" aria-controls="datelist" unselectable="off" aria-sort="none">날짜</th>
+                                <th class="tablesorter-header" scope="col" role="columnheader" aria-disabled="false" aria-controls="datelist" unselectable="off" aria-sort="none">코드</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                                $sql = "SELECT * FROM plan ORDER BY date";
+                                $result = mysqli_query($conn, $sql);
+
+                                while($row = mysqli_fetch_array($result)){
+                                    echo "<tr role=\"row\"><th>".$row['title']."</th><td>".$row['date']."</td><td>".$row['code']."</td></tr>";
+                                }
+                            ?>
+                        </tbody>
+                    </table>
+                    <a href="makeplan.php" class="btn btn-primary">일정 만들기</a>
                 </div>
                 <div class="tab-pane fade" id="pills-notice" role="tabpanel" aria-labelledby="pills-notice-tab">
                     <table id="noticelist" class="table tablesorter tablesorter-default">
