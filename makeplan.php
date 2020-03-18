@@ -104,19 +104,19 @@
                 <div class="form-group row">
                     <label for="" class="col-sm-2 col-form-label">날짜</label>
                     <div class="col-sm-10">
-                        <input type="date" id="date" name="title" style="ime-mode:active;" class="form-control">
+                        <input type="date" id="date" name="date" style="ime-mode:active;" class="form-control">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="" class="col-sm-2 col-form-label">시간</label>
                     <div class="col-sm-10">
-                        <input type="time" value="19:00:00" id="time" name="title" style="ime-mode:active;" class="form-control">
+                        <input type="time" value="19:00:00" id="time" name="time" style="ime-mode:active;" class="form-control">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="" class="col-sm-2 col-form-label">코드</label>
                     <div class="col-sm-10">
-                        <input type="text" id="code" name="title" style="ime-mode:active;" class="form-control">
+                        <input type="text" id="code" name="code" style="ime-mode:active;" class="form-control">
                     </div>
                 </div>
                 <div class="col-auto">

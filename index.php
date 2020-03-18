@@ -135,7 +135,7 @@
                                          $name = $row['name'];
                                          $year = $row['year'];
                                          $rating = $row['rating'];
-                                         echo "<tr><td>".$i.".</td><th>".$year."-".$name."</th><td>{number_format($rating)}</td></tr>";0
+                                         echo "<tr><td>".$i.".</td><th>".$year."-".$name."</th><td>{number_format($rating)}</td></tr>";
                                      }
                                  ?>
                          </table>

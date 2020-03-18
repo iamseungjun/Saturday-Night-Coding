@@ -10,9 +10,9 @@
     $date = $_POST['date'];
     $time = $_POST['time'];
     $code = $_POST['code'];
-    $datetime = $date." ".$time;
+    $datetime = "{$date} {$time}";
 
-    $sql = "INSERT INTO plan(title, date, code) VALUES ('".$title."', '".$datetime."', ':.$code.')";
+    $sql = "INSERT INTO plan(title, date, code) VALUES ('".$title."', '".$datetime."', '".$code."')";
     $result = mysqli_query($conn, $sql);
 ?>
 <meta charset="utf-8">
