@@ -39,31 +39,44 @@
                          </a>
                          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                              <a href="#" class="dropdown-item">시즌 배치 결과</a>
-                             <a href="#" class="dropdown-item">Bronze</a>
-                             <a href="#" class="dropdown-item">Silver</a>
-                             <a href="#" class="dropdown-item">Gold</a>
+                             <a href="#" class="dropdown-item" disabled>Bronze</a>
+                             <a href="#" class="dropdown-item" disabled>Silver</a>
+                             <a href="#" class="dropdown-item" disabled>Gold</a>
                          </div>
                      </li>
                      <li class="nav-item">
                          <a href="dailyresult.php" class="nav-link">오늘의 대회 결과</a>
                      </li>
                      <li class="nav-item">
-                         <a href="notice.php" class="nav-link">공지사항</a>
-                     </li>
-                     <li class="nav-item">
-                         <a href="contestinfo.php" class="nav-link">대회안내</a>
-                     </li>
-                     <li class="nav-item">
-                         <a href="codeupinfo.php" class="nav-link">코드업 사용방법</a>
+                         <a href="notice.php" class="nav-link">공지사항
+                             <?php
+                                $sql = "SELECT * FROM notice ORDER BY date DESC LIMIT 1";
+                                $result = mysqli_query($conn, $sql);
+                                $row = mysqli_fetch_array($result);
+                                $date = $row['date'];
+                                $date = strtotime($date.'+7 days');
+                                $now = strtotime("NOW");
+                                if($date >= $now){
+                                    echo "&nbsp;<span class=\"badge badge-danger\">NEW</span>";
+                                }
+                             ?></a>
                      </li>
                      <li class="nav-item dropdown">
                          <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                             관리자가 추천하는 것들
+                             Q&amp;A
+                         </a>
+                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                             <a href="introduce.php" class="dropdown-item">대회안내</a>
+                             <a href="book.php" class="dropdown-item">코드업 사용방법</a>
+                         </div>
+                     </li>
+                     <li class="nav-item dropdown">
+                         <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                             관리
                          </a>
                          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                              <a href="introduce.php" class="dropdown-item">관리자 소개</a>
                              <a href="book.php" class="dropdown-item">관리자가 추천하는 책</a>
-                             <a href="#" class="dropdown-item">관리자가 추천하는 코딩 공부법</a>
                              <a href="application.php" class="dropdown-item">관리자 신청하기</a>
                          </div>
                      </li>
@@ -119,50 +132,59 @@
 
                         // echo $id;
                         echo "<h2 style=\"color:$color\">$year-$name</h2>";
-                        echo "<a href=\"https://codeup.kr/userinfo.php?user=$id\" class=\"text-secondary\">-$id</a>"
+                        echo "<a href=\"https://codeup.kr/userinfo.php?user=$id\" class=\"text-secondary\">-$id</a>";
                  ?>
              </div>
-             <div id="chart" class="container" style="height: 500px; width: 100%;"></div>
-             <script>
-                 google.charts.load('current', {'packages' : ['corechart']});
-                 google.charts.setOnLoadCallback(drawChart);
+             <div id="chart" class="container" style="height: 500px; width: 100%;">
+                 <?php
+                    if($tier == 'Admin' || $tier == 'Skill'){
+                        echo "레이팅이 없는 사용자입니다.";
+                    } else if($tier == 'Unranked'){
+                        echo "아직 배치가 끝나지 않았거나 대회에 참여하지 않았습니다.";
+                    } else {
+                ?>
+                 <script>
+                     google.charts.load('current', {'packages' : ['corechart']});
+                     google.charts.setOnLoadCallback(drawChart);
 
-                 function drawChart(){
-                     var data = google.visualization.arrayToDataTable([
-                         ['날짜', '레이팅'],
-                         ['19-03-02', 0],
-                         ['19-03-03', 50],
-                         ['19-03-04', 100],
-                         ['19-03-05', 200],
-                         ['19-03-06', 250],
-                         ['19-03-07', 230],
-                         ['19-03-08', 350],
-                         ['19-03-09', 450],
-                         ['19-03-10', 500],
-                         ['19-03-11', 600]
-                     ]);
+                     function drawChart(){
+                         var data = google.visualization.arrayToDataTable([
+                             ['날짜', '레이팅'],
+                             <?php
+                                $sql = "SELECT * FROM rating WHERE id='{$id}' ORDER BY date DESC";
+                                $result = mysqli_query($conn, $sql);
+                                while($row = mysqli_fetch_array($result)){
+                                    $date = strtotime($row['date']);
+                                    echo "['".date('Y-m-d', $date)."', '".$row['rating']."'],\n";
+                                }
+                             ?>
+                         ]);
 
-                     var options = {
-                        title :  '레이팅 현황',
-                        legend : {position: 'top', alignment: 'center'},
-                        animation : {
-                            startup : true,
-                            duration : 4000,
-                            easing : 'inAndOut'
-                        },
-                        chartArea : {
-                            width : '90%',
-                            height : '50%'
-                        },
-                        pointsVisible : 'True',
-                        colors : ['green']
-                     };
+                         var options = {
+                            title :  '레이팅 현황',
+                            legend : {position: 'top', alignment: 'center'},
+                            animation : {
+                                startup : true,
+                                duration : 4000,
+                                easing : 'inAndOut'
+                            },
+                            chartArea : {
+                                width : '90%',
+                                height : '50%'
+                            },
+                            pointsVisible : 'True',
+                            colors : ['green']
+                         };
 
-                    var chart = new google.visualization.LineChart(document.getElementById('chart'));
+                        var chart = new google.visualization.LineChart(document.getElementById('chart'));
 
-                    chart.draw(data, options);
-                 }
-             </script>
+                        chart.draw(data, options);
+                     }
+                 </script>
+                 <?
+                     }
+                  ?>
+             </div>
          <?php
              } else {
                  echo "잘못된 사용자입니다!";

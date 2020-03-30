@@ -61,31 +61,44 @@
                          </a>
                          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                              <a href="#" class="dropdown-item">시즌 배치 결과</a>
-                             <a href="#" class="dropdown-item">Bronze</a>
-                             <a href="#" class="dropdown-item">Silver</a>
-                             <a href="#" class="dropdown-item">Gold</a>
+                             <a href="#" class="dropdown-item" disabled>Bronze</a>
+                             <a href="#" class="dropdown-item" disabled>Silver</a>
+                             <a href="#" class="dropdown-item" disabled>Gold</a>
                          </div>
                      </li>
                      <li class="nav-item">
                          <a href="dailyresult.php" class="nav-link">오늘의 대회 결과</a>
                      </li>
                      <li class="nav-item">
-                         <a href="notice.php" class="nav-link">공지사항</a>
-                     </li>
-                     <li class="nav-item">
-                         <a href="contestinfo.php" class="nav-link">대회안내</a>
-                     </li>
-                     <li class="nav-item">
-                         <a href="codeupinfo.php" class="nav-link">코드업 사용방법</a>
+                         <a href="notice.php" class="nav-link">공지사항
+                             <?php
+                                $sql = "SELECT * FROM notice ORDER BY date DESC LIMIT 1";
+                                $result = mysqli_query($conn, $sql);
+                                $row = mysqli_fetch_array($result);
+                                $date = $row['date'];
+                                $date = strtotime($date.'+7 days');
+                                $now = strtotime("NOW");
+                                if($date >= $now){
+                                    echo "&nbsp;<span class=\"badge badge-danger\">NEW</span>";
+                                }
+                             ?></a>
                      </li>
                      <li class="nav-item dropdown">
                          <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                             관리자가 추천하는 것들
+                             Q&amp;A
+                         </a>
+                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                             <a href="introduce.php" class="dropdown-item">대회안내</a>
+                             <a href="book.php" class="dropdown-item">코드업 사용방법</a>
+                         </div>
+                     </li>
+                     <li class="nav-item dropdown">
+                         <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                             관리
                          </a>
                          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                              <a href="introduce.php" class="dropdown-item">관리자 소개</a>
                              <a href="book.php" class="dropdown-item">관리자가 추천하는 책</a>
-                             <a href="#" class="dropdown-item">관리자가 추천하는 코딩 공부법</a>
                              <a href="application.php" class="dropdown-item">관리자 신청하기</a>
                          </div>
                      </li>

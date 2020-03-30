@@ -38,31 +38,44 @@
                          </a>
                          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                              <a href="#" class="dropdown-item">시즌 배치 결과</a>
-                             <a href="#" class="dropdown-item">Bronze</a>
-                             <a href="#" class="dropdown-item">Silver</a>
-                             <a href="#" class="dropdown-item">Gold</a>
+                             <a href="#" class="dropdown-item" disabled>Bronze</a>
+                             <a href="#" class="dropdown-item" disabled>Silver</a>
+                             <a href="#" class="dropdown-item" disabled>Gold</a>
                          </div>
                      </li>
                      <li class="nav-item">
                          <a href="dailyresult.php" class="nav-link">오늘의 대회 결과</a>
                      </li>
                      <li class="nav-item">
-                         <a href="notice.php" class="nav-link">공지사항</a>
-                     </li>
-                     <li class="nav-item">
-                         <a href="contestinfo.php" class="nav-link">대회안내</a>
-                     </li>
-                     <li class="nav-item">
-                         <a href="codeupinfo.php" class="nav-link">코드업 사용방법</a>
+                         <a href="notice.php" class="nav-link">공지사항
+                             <?php
+                                $sql = "SELECT * FROM notice ORDER BY date DESC LIMIT 1";
+                                $result = mysqli_query($conn, $sql);
+                                $row = mysqli_fetch_array($result);
+                                $date = $row['date'];
+                                $date = strtotime($date.'+7 days');
+                                $now = strtotime("NOW");
+                                if($date >= $now){
+                                    echo "&nbsp;<span class=\"badge badge-danger\">NEW</span>";
+                                }
+                             ?></a>
                      </li>
                      <li class="nav-item dropdown">
                          <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                             관리자가 추천하는 것들
+                             Q&amp;A
+                         </a>
+                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                             <a href="introduce.php" class="dropdown-item">대회안내</a>
+                             <a href="book.php" class="dropdown-item">코드업 사용방법</a>
+                         </div>
+                     </li>
+                     <li class="nav-item dropdown">
+                         <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                             관리
                          </a>
                          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                              <a href="introduce.php" class="dropdown-item">관리자 소개</a>
                              <a href="book.php" class="dropdown-item">관리자가 추천하는 책</a>
-                             <a href="#" class="dropdown-item">관리자가 추천하는 코딩 공부법</a>
                              <a href="application.php" class="dropdown-item">관리자 신청하기</a>
                          </div>
                      </li>
@@ -96,8 +109,8 @@
                  } else {
              ?>
              <div class="alert alert-info" role="alert">
-                 <div class="h4 alert-heading">2기 관리자 모집중!</div>
-                 <ul class="list-unstyled">
+                 <div class="h4 alert-heading">2기 관리자 모집 예정!</div>
+                 <!-- <ul class="list-unstyled"> 어머나 이걸 보다니, 코로나 전에 쓴것들이얌
                      <li>모집 대상 : 인공지능소프트웨어과 2020년도 입학 신입생</li>
                      <li>모집 인원 : 1명</li>
                      <li>신청 기한 : 2020년 03월 19일 오전 0시</li>
@@ -107,7 +120,7 @@
                      <li>최종 발표 : 2020년 03월 25일 오전 8시</li>
                      <li>주의 사항 : 모든 안내와 발표는 카카오톡으로 전송됩니다. 카카오톡을 반드시 확인해 주시기 바랍니다.</li>
                      <li>문의 사항 : 모든 문의사항은 <a href="mailto:leezeunjun@gmail.com" class="alert-link">메인 관리자 이메일(leezeunjun@gmail.com)</a>로 연락주시기 바랍니다.</li>
-                 </ul>
+                 </ul> -->
              </div>
              <div class="alert alert-success alert-dismissible fade show" role="alert">
                  <strong>관리자 특권</strong>
