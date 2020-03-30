@@ -1,5 +1,11 @@
 <?php
     session_start();
+    $conn = mysqli_connect(
+        'localhost',
+        'root',
+        'E9LWMIZotVGX',
+        'contest'
+    );
 ?>
 <!DOCTYPE html>
 <html lang="ko">
@@ -101,12 +107,6 @@
      <main role="main">
          <?php
            if(isset($_SESSION['id'])){
-                   $conn = mysqli_connect(
-                       'localhost',
-                       'root',
-                       'E9LWMIZotVGX',
-                       'contest'
-                   );
                    $sql = "SELECT * FROM member WHERE id='{$_SESSION['id']}'";
                    $result = mysqli_query($conn, $sql);
                    $row = mysqli_fetch_array($result);

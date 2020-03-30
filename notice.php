@@ -1,5 +1,11 @@
 <?php
     session_start();
+    $conn = mysqli_connect(
+        'localhost',
+        'root',
+        'E9LWMIZotVGX',
+        'contest'
+    );
 ?>
 <!DOCTYPE html>
 <html lang="ko">
@@ -108,12 +114,6 @@
                  </thead>
                  <tbody>
                     <?php
-                        $conn = mysqli_connect(
-                            'localhost',
-                            'root',
-                            'E9LWMIZotVGX',
-                            'contest'
-                        );
                         $sql = "SELECT * FROM notice ORDER BY num DESC";
                         $result = mysqli_query($conn, $sql);
 

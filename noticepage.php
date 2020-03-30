@@ -1,5 +1,11 @@
 <?php
     session_start();
+    $conn = mysqli_connect(
+        'localhost',
+        'root',
+        'E9LWMIZotVGX',
+        'contest'
+    );
 ?>
 <!DOCTYPE html>
 <html lang="ko">
@@ -103,12 +109,6 @@
                  if($t==NULL){
                      echo "<span>정확한 공지사항을 선택하시기 바랍니다.</span>";
                  } else {
-                     $conn = mysqli_connect(
-                         'localhost',
-                         'root',
-                         'E9LWMIZotVGX',
-                         'contest'
-                     );
                      $sql = "SELECT * FROM notice WHERE num=$_GET['num']";
                      $result = mysqli_query($conn, $sql);
                      $row = mysqli_fetch_array($result)

@@ -1,3 +1,11 @@
+<?php
+    $conn = mysqli_connect(
+        'localhost',
+        'root',
+        'E9LWMIZotVGX',
+        'contest'
+    );
+?>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
