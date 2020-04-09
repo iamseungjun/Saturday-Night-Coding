@@ -107,35 +107,36 @@
      </header>
      <main role="main">
          <div class="container mt-4">
+             <?php
+                 $id = $_GET['id'];
+
+                 $conn = mysqli_connect(
+                     'localhost',
+                     'root',
+                     'E9LWMIZotVGX',
+                     'contest'
+                 );
+                 $sql = "SELECT * FROM member WHERE id='$id'";
+                 $result = mysqli_query($conn, $sql);
+                 $row = mysqli_fetch_array($result);
+                 $year = $row['year'];
+                 $name = $row['name'];
+                 $tier = $row['tier'];
+                 if(!empty($id) && !empty($row)){
+                     if($tier == 'Admin') {
+                         $color = "#FF0000";
+                     } else if($tier == 'Gold') {
+                         $color = "#FFD700";
+                     } else if($tier == 'Silver') {
+                         $color = "#C0C0C0";
+                     } else if($tier == 'Bronze') {
+                         $color = "#CD7F32";
+                     } else {
+                         $color = "#808080";
+                     }
+             ?>
              <div class="container">
                  <?php
-                    $id = $_GET['id'];
-
-                    $conn = mysqli_connect(
-                        'localhost',
-                        'root',
-                        'E9LWMIZotVGX',
-                        'contest'
-                    );
-                    $sql = "SELECT * FROM member WHERE id='$id'";
-                    $result = mysqli_query($conn, $sql);
-                    $row = mysqli_fetch_array($result);
-                    $year = $row['year'];
-                    $name = $row['name'];
-                    $tier = $row['tier'];
-                    if(!empty($id) && !empty($row)){
-                        if($tier == 'Admin') {
-                            $color = "#FF0000";
-                        } else if($tier == 'Gold') {
-                            $color = "#FFD700";
-                        } else if($tier == 'Silver') {
-                            $color = "#C0C0C0";
-                        } else if($tier == 'Bronze') {
-                            $color = "#CD7F32";
-                        } else {
-                            $color = "#808080";
-                        }
-
                         // echo $id;
                         echo "<h2 style=\"color:$color\">$year-$name</h2>";
                         echo "<a href=\"https://codeup.kr/userinfo.php?user=$id\" class=\"text-secondary\">-$id</a>";
