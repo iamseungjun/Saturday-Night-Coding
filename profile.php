@@ -138,7 +138,7 @@
              <div class="container">
                  <?php
                         // echo $id;
-                        echo "<h2 style=\"color:$color\">$year-$name</h2><a href="#">test</a>";
+                        echo "<h2 style=\"color:$color\">$year-$name</h2><a href=\"#\">test</a>";
                         echo "<a href=\"https://codeup.kr/userinfo.php?user=$id\" class=\"text-secondary\">- $id</a>";
                  ?>
              </div>
