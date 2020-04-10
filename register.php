@@ -137,20 +137,20 @@
                 </script>
                 <form method="post" action="register_ok.php" name="registerform" id="registerform" class="container">
                     <div class="form-group row">
-                        <label for="" class="col-sm-2 col-form-label">아이디</label>
+                        <label for="" class="col-sm-2 col-form-label"><span class="text-danger">* </span>아이디</label>
                         <div class="col-sm-10">
                             <input type="text" id="identy" name="identy" style="ime-mode:active;" class="form-control" placeholder="코드업 아이디와 일치시켜 주시기 바랍니다.">
                             <span id="id-check"><span class="text-danger">아이디를 입력하세요.</span</span>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="" class="col-sm-2 col-form-label">이름</label>
+                        <label for="" class="col-sm-2 col-form-label"><span class="text-danger">* </span>이름</label>
                         <div class="col-sm-10">
                             <input type="text" name="name" class="form-control" style="ime-mode:disabled;">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="" class="col-sm-2 col-form-label">기수</label>
+                        <label for="" class="col-sm-2 col-form-label"><span class="text-danger">* </span>기수</label>
                         <div class="col-sm-10">
                             <div class="form-check form-check-inline">
                                 <input type="radio" name="year" id="year1" value="1기" class="form-check-input">
@@ -168,25 +168,25 @@
                     </div>
                     <hr>
                     <div class="form-group row">
-                        <label for="" class="col-sm-2 col-form-label">비밀번호</label>
+                        <label for="" class="col-sm-2 col-form-label"><span class="text-danger">* </span>비밀번호</label>
                         <div class="col-sm-10">
                             <input type="password" name="pw" id="pw1" class="form-control" style="ime-mode:disabled;">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="" class="col-sm-2 col-form-label">비밀번호 확인</label>
+                        <label for="" class="col-sm-2 col-form-label"><span class="text-danger">* </span>비밀번호 확인</label>
                         <div class="col-sm-10">
                             <input type="password" name="pwch" id="pw2" class="form-control" style="ime-mode:disabled;">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="" class="col-sm-2 col-form-label">이메일</label>
+                        <label for="" class="col-sm-2 col-form-label"><span class="text-danger">* </span>이메일</label>
                         <div class="col-sm-10">
                             <input type="email" name="email" value="" class="form-control" style="ime-mode:disabled;" placeholder="이메일은 비밀번호 찾기에 이용됩니다.">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="" class="col-sm-2 col-form-label">동의</label>
+                        <label for="" class="col-sm-2 col-form-label"><span class="text-danger">* </span>동의</label>
                         <div class="col-sm-10">
                             <div class="form-check mt-2">
                                 <input type="checkbox" class="form-check-input" name="agree" id="agree">
@@ -194,8 +194,57 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-auto">
+                    <div class="form-group row">
+                        <label for="" class="col-sm-2 col-form-label">Facebook</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="facebook" value="" class="form-control" style="ime-mode:disabled;">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="" class="col-sm-2 col-form-label">Twitter</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="twitter" value="" class="form-control" style="ime-mode:disabled;">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="" class="col-sm-2 col-form-label">Instagram</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="instagram" value="" class="form-control" style="ime-mode:disabled;">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="" class="col-sm-2 col-form-label">Github</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="github" value="" class="form-control" style="ime-mode:disabled;">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="" class="col-sm-2 col-form-label">Youtube</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="youtube" value="" class="form-control" style="ime-mode:disabled;">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="" class="col-sm-2 col-form-label">Discord</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="discord" value="" class="form-control" style="ime-mode:disabled;">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="" class="col-sm-2 col-form-label">Codeforces</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="codeforces" value="" class="form-control" style="ime-mode:disabled;">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="" class="col-sm-2 col-form-label">Atcoder</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="atcoder" value="" class="form-control" style="ime-mode:disabled;">
+                        </div>
+                    </div>
+                    <div class="col-auto"><span class="text-danger">* 는 필수항목입니다.</span>
                         <button type="submit" id="submit" class="btn btn-primary mt-2">가입하기</button>
+                        <a href="snsinfo.php" class="text-primary">SNS 추가하는 방법</a>
                     </div>
                 </form>
                 <script type="text/javascript">

@@ -141,6 +141,54 @@
                            <input type="email" name="email" value="<?php echo "{$row['email']}"; ?>" class="form-control" placeholder="이메일은 비밀번호 찾기에 이용됩니다.">
                        </div>
                    </div>
+                   <div class="form-group row">
+                       <label for="" class="col-sm-2 col-form-label">Facebook</label>
+                       <div class="col-sm-10">
+                           <input type="text" name="facebook" value="<?php echo "{$row['facebook']}"; ?>" class="form-control" style="ime-mode:disabled;">
+                       </div>
+                   </div>
+                   <div class="form-group row">
+                       <label for="" class="col-sm-2 col-form-label">Twitter</label>
+                       <div class="col-sm-10">
+                           <input type="text" name="twitter" value="<?php echo "{$row['twitter']}"; ?>" class="form-control" style="ime-mode:disabled;">
+                       </div>
+                   </div>
+                   <div class="form-group row">
+                       <label for="" class="col-sm-2 col-form-label">Instagram</label>
+                       <div class="col-sm-10">
+                           <input type="text" name="instagram" value="<?php echo "{$row['instagram']}"; ?>" class="form-control" style="ime-mode:disabled;">
+                       </div>
+                   </div>
+                   <div class="form-group row">
+                       <label for="" class="col-sm-2 col-form-label">Github</label>
+                       <div class="col-sm-10">
+                           <input type="text" name="github" value="<?php echo "{$row['github']}"; ?>" class="form-control" style="ime-mode:disabled;">
+                       </div>
+                   </div>
+                   <div class="form-group row">
+                       <label for="" class="col-sm-2 col-form-label">Youtube</label>
+                       <div class="col-sm-10">
+                           <input type="text" name="youtube" value="<?php echo "{$row['youtube']}"; ?>" class="form-control" style="ime-mode:disabled;">
+                       </div>
+                   </div>
+                   <div class="form-group row">
+                       <label for="" class="col-sm-2 col-form-label">Discord</label>
+                       <div class="col-sm-10">
+                           <input type="text" name="discord" value="<?php echo "{$row['discord']}"; ?>" class="form-control" style="ime-mode:disabled;">
+                       </div>
+                   </div>
+                   <div class="form-group row">
+                       <label for="" class="col-sm-2 col-form-label">Codeforces</label>
+                       <div class="col-sm-10">
+                           <input type="text" name="codeforces" value="<?php echo "{$row['codeforces']}"; ?>" class="form-control" style="ime-mode:disabled;">
+                       </div>
+                   </div>
+                   <div class="form-group row">
+                       <label for="" class="col-sm-2 col-form-label">Atcoder</label>
+                       <div class="col-sm-10">
+                           <input type="text" name="atcoder" value="<?php echo "{$row['atcoder']}"; ?>" class="form-control" style="ime-mode:disabled;">
+                       </div>
+                   </div>
                    <div class="col-auto">
                        <button type="submit" id="submit" class="btn btn-primary mt-2">정보수정</button>
                    </div>

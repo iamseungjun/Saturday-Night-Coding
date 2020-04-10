@@ -62,7 +62,7 @@
                                 $date = $row['date'];
                                 $date = strtotime($date.'+7 days');
                                 $now = strtotime("NOW");
-                                if($date >= $now){
+                                if($date <= $now && !empty($row)){
                                     echo "&nbsp;<span class=\"badge badge-danger\">NEW</span>";
                                 }
                              ?></a>
@@ -138,8 +138,8 @@
              <div class="container">
                  <?php
                         // echo $id;
-                        echo "<h2 style=\"color:$color\">$year-$name</h2>";
-                        echo "<a href=\"https://codeup.kr/userinfo.php?user=$id\" class=\"text-secondary\">-$id</a>";
+                        echo "<h2 style=\"color:$color\">$year-$name</h2><a href="#">test</a>";
+                        echo "<a href=\"https://codeup.kr/userinfo.php?user=$id\" class=\"text-secondary\">- $id</a>";
                  ?>
              </div>
              <div id="chart" class="container" style="height: 500px; width: 100%;">
@@ -188,7 +188,7 @@
                         chart.draw(data, options);
                      }
                  </script>
-                 <?
+                 <?php
                      }
                   ?>
              </div>
