@@ -137,18 +137,22 @@
              ?>
              <div class="container">
                  <?php
-                        // echo $id;
-                        echo "<h2 style=\"color:$color\">$year-$name</h2>";
-                        echo "<a href=\"https://codeup.kr/userinfo.php?user=$id\" class=\"text-secondary\">- $id</a>";
-                        if(!empty($row['facebook'])){ echo "<a href=\"{$row['facebook']}\"><i class=\"fab fa-facebook-square\"></i></a>"; }
-                        if(!empty($row['twitter'])){ echo "<a href=\"{$row['twitter']}\"><i class=\"fab fa-twitter-square\"></i></a>"; }
-                        if(!empty($row['instagram'])){ echo "<a href=\"{$row['instagram']}\"><i class=\"fab fa-instagram-square\"></i></a>"; }
-                        if(!empty($row['github'])){ echo "<a href=\"{$row['github']}\"><i class=\"fab fa-github-square\"></i></a>"; }
-                        if(!empty($row['youtube'])){ echo "<a href=\"{$row['youtube']}\"><i class=\"fab fa-youtube-square\"></i></a>"; }
-                        if(!empty($row['discord'])){ echo "<span data-toggle=\"tooltip\" data-placement=\"top\" title=\"{$row['discord']}\"><i class=\"fab fa-discord\"></i></span>"; }
-                        if(!empty($row['codeforces'])){ echo "<a href=\"{$row['codeforces']}\"><img src=\"img/codeforces.svg\" alt=\"codeforces\"></a>"; }
-                        if(!empty($row['atcoder'])){ echo "<a href=\"{$row['atcoder']}\"><img src=\"img/atcoder.png\" alt=\"atcoder\"></a>"; }
+                    // echo $id;
+                    echo "<h2 style=\"color:$color\">$year - $name</h2>";
+                ?>
+                <span style="color: #555555">
+                <?php
+                    echo "<a href=\"https://codeup.kr/userinfo.php?user=$id\" class=\"text-secondary\">- $id</a>";
+                    if(!empty($row['facebook'])){ echo "<a href=\"{$row['facebook']}\" target=\"_blank\"><i class=\"fab fa-facebook-square\"></i></a> "; }
+                    if(!empty($row['twitter'])){ echo "<a href=\"{$row['twitter']}\" target=\"_blank\"><i class=\"fab fa-twitter-square\"></i></a> "; }
+                    if(!empty($row['instagram'])){ echo "<a href=\"{$row['instagram']}\" target=\"_blank\"><i class=\"fab fa-instagram-square\"></i></a> "; }
+                    if(!empty($row['github'])){ echo "<a href=\"{$row['github']}\" target=\"_blank\"><i class=\"fab fa-github-square\"></i></a> "; }
+                    if(!empty($row['youtube'])){ echo "<a href=\"{$row['youtube']}\" target=\"_blank\"><i class=\"fab fa-youtube-square\"></i></a> "; }
+                    if(!empty($row['discord'])){ echo "<span data-toggle=\"tooltip\" data-placement=\"top\" title=\"{$row['discord']}\"><i class=\"fab fa-discord\"></i></span> "; }
+                    if(!empty($row['codeforces'])){ echo "<a href=\"{$row['codeforces']}\" target=\"_blank\"><img src=\"img/codeforces.svg\" alt=\"codeforces\"></a> "; }
+                    if(!empty($row['atcoder'])){ echo "<a href=\"{$row['atcoder']}\" target=\"_blank\"><img src=\"img/atcoder.png\" alt=\"atcoder\"></a> "; }
                  ?>
+                 </span>
              </div>
              <script>
                  $(function(){
