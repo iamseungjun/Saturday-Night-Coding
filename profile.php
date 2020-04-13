@@ -142,7 +142,6 @@
                 ?>
                 <span style="color: #555555">
                 <?php
-                    echo "<a href=\"https://codeup.kr/userinfo.php?user=$id\" class=\"text-secondary\">- $id</a>";
                     if(!empty($row['facebook'])){ echo "<a href=\"{$row['facebook']}\" target=\"_blank\"><i class=\"fab fa-facebook-square\"></i></a> "; }
                     if(!empty($row['twitter'])){ echo "<a href=\"{$row['twitter']}\" target=\"_blank\"><i class=\"fab fa-twitter-square\"></i></a> "; }
                     if(!empty($row['instagram'])){ echo "<a href=\"{$row['instagram']}\" target=\"_blank\"><i class=\"fab fa-instagram-square\"></i></a> "; }
@@ -153,6 +152,7 @@
                     if(!empty($row['atcoder'])){ echo "<a href=\"{$row['atcoder']}\" target=\"_blank\"><img src=\"img/atcoder.png\" alt=\"atcoder\"></a> "; }
                  ?>
                  </span>
+                 <?php echo "<a href=\"https://codeup.kr/userinfo.php?user=$id\" class=\"text-secondary\">- $id</a>"; ?>
              </div>
              <script>
                  $(function(){
