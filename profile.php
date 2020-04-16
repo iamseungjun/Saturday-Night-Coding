@@ -74,6 +74,7 @@
                          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                              <a href="introduce.php" class="dropdown-item">대회안내</a>
                              <a href="book.php" class="dropdown-item">코드업 사용방법</a>
+                             <a href="snsinfo.php" class="dropdown-item">SNS 연동방법</a>
                          </div>
                      </li>
                      <li class="nav-item dropdown">
@@ -139,20 +140,20 @@
                  <?php
                     // echo $id;
                     echo "<h2 style=\"color:$color\">$year - $name</h2>";
+                    echo "<a href=\"https://codeup.kr/userinfo.php?user=$id\" class=\"text-decoration-none\">- $id</a>";
                 ?>
                 <div class="h3">
                 <?php
-                    if(!empty($row['facebook'])){ echo "<a href=\"{$row['facebook']}\" target=\"_blank\"><i class=\"fab fa-facebook-square\" style=\"color : #555555;\"></i></a> "; }
-                    if(!empty($row['twitter'])){ echo "<a href=\"{$row['twitter']}\" target=\"_blank\"><i class=\"fab fa-twitter-square\" style=\"color : #555555;\"></i></a> "; }
-                    if(!empty($row['instagram'])){ echo "<a href=\"{$row['instagram']}\" target=\"_blank\"><i class=\"fab fa-instagram-square\" style=\"color : #555555;\"></i></a> "; }
-                    if(!empty($row['github'])){ echo "<a href=\"{$row['github']}\" target=\"_blank\"><i class=\"fab fa-github-square\" style=\"color : #555555;\"></i></a> "; }
-                    if(!empty($row['youtube'])){ echo "<a href=\"{$row['youtube']}\" target=\"_blank\"><i class=\"fab fa-youtube-square\" style=\"color : #555555;\"></i></a> "; }
-                    if(!empty($row['discord'])){ echo "<span data-toggle=\"tooltip\" data-placement=\"top\" title=\"{$row['discord']}\"><i class=\"fab fa-discord\" style=\"color : #555555;\"></i></span> "; }
+                    if(!empty($row['facebook'])){ echo "<a href=\"{$row['facebook']}\" target=\"_blank\"><i class=\"fab fa-facebook-square\" style=\"color : #666666;\"></i></a> "; }
+                    if(!empty($row['twitter'])){ echo "<a href=\"{$row['twitter']}\" target=\"_blank\"><i class=\"fab fa-twitter-square\" style=\"color : #666666;\"></i></a> "; }
+                    if(!empty($row['instagram'])){ echo "<a href=\"{$row['instagram']}\" target=\"_blank\"><i class=\"fab fa-instagram-square\" style=\"color : #666666;\"></i></a> "; }
+                    if(!empty($row['github'])){ echo "<a href=\"{$row['github']}\" target=\"_blank\"><i class=\"fab fa-github-square\" style=\"color : #666666;\"></i></a> "; }
+                    if(!empty($row['youtube'])){ echo "<a href=\"{$row['youtube']}\" target=\"_blank\"><i class=\"fab fa-youtube-square\" style=\"color : #666666;\"></i></a> "; }
+                    if(!empty($row['discord'])){ echo "<span data-toggle=\"tooltip\" data-placement=\"top\" title=\"{$row['discord']}\"><i class=\"fab fa-discord\" style=\"color : #666666;\"></i></span> "; }
                     if(!empty($row['codeforces'])){ echo "<a href=\"{$row['codeforces']}\" target=\"_blank\"><img src=\"img/codeforces.svg\" alt=\"codeforces\"></a> "; }
                     if(!empty($row['atcoder'])){ echo "<a href=\"{$row['atcoder']}\" target=\"_blank\"><img src=\"img/atcoder.png\" alt=\"atcoder\"></a> "; }
                  ?>
                 </div>
-                 <?php echo "<a href=\"https://codeup.kr/userinfo.php?user=$id\" class=\"text-secondary\">- $id</a>"; ?>
              </div>
              <script>
                  $(function(){
@@ -219,7 +220,7 @@
      <hr>
      <footer class="container">
          <h6 class="text-center mt-2">
-             COPYRIGHT &copy; 2020~ SeungJun Lee
+             COPYRIGHT &copy; 2020~ SeungJun Le
              <br>
              All Rights Reserved
          </h6>

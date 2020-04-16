@@ -79,6 +79,7 @@
                              <a href="introduce.php" class="dropdown-item">관리자 소개</a>
                              <a href="book.php" class="dropdown-item">관리자가 추천하는 책</a>
                              <a href="application.php" class="dropdown-item">관리자 신청하기</a>
+                             <a href="snsinfo.php" class="dropdown-item">SNS 연동방법</a>
                          </div>
                      </li>
                      <li class="nav-item">

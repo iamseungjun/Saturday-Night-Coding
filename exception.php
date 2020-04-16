@@ -73,6 +73,7 @@
                          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                              <a href="introduce.php" class="dropdown-item">대회안내</a>
                              <a href="book.php" class="dropdown-item">코드업 사용방법</a>
+                             <a href="snsinfo.php" class="dropdown-item">SNS 연동방법</a>
                          </div>
                      </li>
                      <li class="nav-item dropdown">
