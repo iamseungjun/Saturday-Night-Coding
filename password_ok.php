@@ -35,9 +35,9 @@
     $idch = "SELECT * FROM member WHERE id='$identy'";
     $result = mysqli_query($conn, $idch);
     $row = mysqli_fetch_array($result);
-    
+
     if($row <= 0){
-        echo "<script>alert('아이디 또는 이름이 잘못되었습니다. 이 알림이 지속되면 리자에게 연락해주세요.'); history.back();</script>";
+        echo "<script>alert('아이디 또는 이름이 잘못되었습니다. 이 알림이 지속되면 관리자에게 연락해주세요.'); history.back();</script>";
     } else {
         $email = $row['email'];
         $pw = GenerateString();
@@ -45,7 +45,7 @@
 
         $sql = "UPDATE member SET pw='{$pwresult}' WHERE id='{$identy}'";
         $result = mysqli_query($conn, $sql);
-		
+
 		$SesClient = new SesClient([
 		    'profile' => 'default',
 		    'version' => '2010-12-01',
@@ -62,7 +62,7 @@
                       '<p>임시 비밀번호로 로그인한 후, 반드시 비밀번호를 변경해주세요.</p>'.
                       '<p>임시 비밀번호로 로그인이 되지 않을 경우, <a href="mailto:smcsnc2020@gmail.com">smcsnc2020@gmail.com</a> 또는 슬랙으로 연락주시기 바랍니다.</p>';
         $char_set = 'UTF-8';
-	/////////////////////////////////////EMAIL START	
+	/////////////////////////////////////EMAIL START
 		try {
             $result = $SesClient->sendEmail([
                 'Destination' => [
